@@ -17,6 +17,7 @@ import plotly.express as px
 import plotly.graph_objects as go
 from plotly.subplots import make_subplots
 import json
+import io
 from datetime import datetime, timedelta
 import random
 from collections import Counter, defaultdict
@@ -25,7 +26,13 @@ from pathlib import Path
 
 # Import our sentiment analysis modules
 from simplified_demo import SimplifiedSentimentAnalyzer
-from ai_chatbot import HealthcareSentimentChatbot, create_chat_interface, create_ai_insights_panel
+try:
+    from ai_chatbot import HealthcareSentimentChatbot, create_chat_interface, create_ai_insights_panel
+    AI_CHATBOT_AVAILABLE = True
+except ImportError as e:
+    st.warning(f"Advanced AI chatbot not available: {e}")
+    from simple_ai_chatbot import SimpleHealthcareChatbot, create_simple_chat_interface, create_simple_ai_insights
+    AI_CHATBOT_AVAILABLE = False
 # from hipaa_sentiment_analysis import HIPAACompliantSentimentAnalyzer  # Optional: Full analysis
 
 # Page configuration
@@ -209,6 +216,76 @@ def create_sentiment_legend():
         </div>
     </div>
     """, unsafe_allow_html=True)
+
+def create_sidebar_chat_interface(chatbot):
+    """Create a compact chat interface for the sidebar."""
+    st.markdown("**💬 Ask about your data:**")
+    
+    # Chat input
+    user_question = st.text_input(
+        "Question:",
+        placeholder="e.g., Which service performs best?",
+        key="sidebar_chat_input",
+        label_visibility="collapsed"
+    )
+    
+    # Chat history (compact)
+    if 'sidebar_chat_history' not in st.session_state:
+        st.session_state.sidebar_chat_history = []
+    
+    # Display recent messages (last 3)
+    recent_messages = st.session_state.sidebar_chat_history[-3:]
+    for message in recent_messages:
+        if message["role"] == "user":
+            st.markdown(f"**You:** {message['content'][:50]}{'...' if len(message['content']) > 50 else ''}")
+        else:
+            st.markdown(f"**AI:** {message['content'][:50]}{'...' if len(message['content']) > 50 else ''}")
+    
+    # Process question
+    if user_question and st.button("Ask", type="primary", key="sidebar_ask_btn"):
+        # Add user message
+        st.session_state.sidebar_chat_history.append({
+            "role": "user",
+            "content": user_question
+        })
+        
+        # Get context
+        if 'data_context' in st.session_state:
+            context = st.session_state.data_context
+        else:
+            context = "No data context available."
+        
+        # Get AI response
+        with st.spinner("🤖 Thinking..."):
+            response = chatbot.answer_question(user_question, context)
+        
+        # Add AI response
+        st.session_state.sidebar_chat_history.append({
+            "role": "assistant",
+            "content": response["answer"],
+            "confidence": response["confidence"]
+        })
+        
+        st.rerun()
+    
+    # Quick questions
+    st.markdown("**🚀 Quick Questions:**")
+    if st.button("📊 Overall Performance", key="sidebar_q1"):
+        st.session_state.sidebar_chat_input = "What is the overall performance of our healthcare services?"
+        st.rerun()
+    
+    if st.button("🏆 Best Services", key="sidebar_q2"):
+        st.session_state.sidebar_chat_input = "Which services are performing the best?"
+        st.rerun()
+    
+    if st.button("🔧 Areas to Improve", key="sidebar_q3"):
+        st.session_state.sidebar_chat_input = "What areas need improvement based on patient feedback?"
+        st.rerun()
+    
+    # Clear chat
+    if st.button("🗑️ Clear Chat", key="sidebar_clear"):
+        st.session_state.sidebar_chat_history = []
+        st.rerun()
 
 def create_magic_ui_header():
     """Create an animated header with Magic UI styling."""
@@ -491,6 +568,24 @@ def main():
     
     st.sidebar.markdown("---")
     
+    # AI Chatbot in Sidebar
+    st.sidebar.markdown("### 🤖 AI Assistant")
+    
+    # Initialize chatbot in sidebar
+    if AI_CHATBOT_AVAILABLE:
+        if 'sidebar_chatbot' not in st.session_state:
+            st.session_state.sidebar_chatbot = HealthcareSentimentChatbot(enable_ai=enable_ai, offline_mode=offline_mode)
+        sidebar_chatbot = st.session_state.sidebar_chatbot
+    else:
+        if 'sidebar_simple_chatbot' not in st.session_state:
+            st.session_state.sidebar_simple_chatbot = SimpleHealthcareChatbot(enable_ai=enable_ai)
+        sidebar_chatbot = st.session_state.sidebar_simple_chatbot
+    
+    # Sidebar chat interface
+    create_sidebar_chat_interface(sidebar_chatbot)
+    
+    st.sidebar.markdown("---")
+    
     # Load data
     with st.spinner("🔄 Loading analysis data..."):
         analysis_data = load_sample_data()
@@ -499,6 +594,16 @@ def main():
     service_analysis = analysis_data['service_analysis']
     combinations = analysis_data['combinations']
     insights = analysis_data['insights']
+    
+    # Prepare data context for AI chatbot
+    if 'data_context' not in st.session_state:
+        if AI_CHATBOT_AVAILABLE:
+            chatbot = HealthcareSentimentChatbot(enable_ai=enable_ai, offline_mode=offline_mode)
+        else:
+            chatbot = SimpleHealthcareChatbot(enable_ai=enable_ai)
+        
+        data_context = chatbot.prepare_data_context(analyzer.analysis_results, data)
+        st.session_state.data_context = data_context
     
     # Main dashboard
     st.markdown("## 📊 Executive Summary")
@@ -545,7 +650,7 @@ def main():
         "🔗 Combinations", 
         "👥 Demographics",
         "📊 Visualizations", 
-        "🤖 AI Assistant",
+        "📋 Raw Data Overview",
         "💡 Insights"
     ])
     
@@ -915,26 +1020,208 @@ def main():
             st.info("No demographic analysis data available. Please run the analysis first.")
     
     with tab6:
-        st.markdown("### 🤖 AI-Powered Data Assistant")
-        st.markdown("Ask questions about your sentiment analysis data and get intelligent insights!")
+        st.markdown("### 📋 Raw Data Overview")
+        st.markdown("**For your colleagues:** This shows the actual patient feedback data that was analyzed.")
         
-        # Prepare data context for AI
-        if 'chatbot' not in st.session_state:
-            st.session_state.chatbot = HealthcareSentimentChatbot(enable_ai=enable_ai, offline_mode=offline_mode)
-        
-        chatbot = st.session_state.chatbot
-        
-        # Prepare comprehensive data context
-        data_context = chatbot.prepare_data_context(analyzer.analysis_results, data)
-        st.session_state.data_context = data_context
-        
-        # AI Insights Panel
-        create_ai_insights_panel(analyzer.analysis_results, data)
+        # Data summary
+        col1, col2, col3, col4 = st.columns(4)
+        with col1:
+            st.metric("Total Feedback", f"{len(data):,}")
+        with col2:
+            st.metric("Unique Services", f"{len(set(item['service_type'] for item in data))}")
+        with col3:
+            st.metric("Date Range", f"{min(item['date'] for item in data).strftime('%Y-%m-%d')} to {max(item['date'] for item in data).strftime('%Y-%m-%d')}")
+        with col4:
+            avg_rating = sum(item['rating'] for item in data) / len(data)
+            st.metric("Average Rating", f"{avg_rating:.1f}/5")
         
         st.markdown("---")
         
-        # Chat Interface
-        create_chat_interface()
+        # Data filters
+        st.markdown("#### 🔍 Filter Data")
+        col1, col2, col3 = st.columns(3)
+        
+        with col1:
+            selected_services = st.multiselect(
+                "Filter by Service:",
+                options=list(set(item['service_type'] for item in data)),
+                default=list(set(item['service_type'] for item in data))
+            )
+        
+        with col2:
+            sentiment_filter = st.selectbox(
+                "Filter by Sentiment:",
+                options=["All", "Positive", "Negative", "Neutral"],
+                index=0
+            )
+        
+        with col3:
+            rating_filter = st.slider(
+                "Filter by Rating:",
+                min_value=1,
+                max_value=5,
+                value=(1, 5)
+            )
+        
+        # Apply filters
+        filtered_data = data.copy()
+        
+        if selected_services:
+            filtered_data = [item for item in filtered_data if item['service_type'] in selected_services]
+        
+        if sentiment_filter != "All":
+            filtered_data = [item for item in filtered_data if item['predicted_sentiment'] == sentiment_filter.lower()]
+        
+        filtered_data = [item for item in filtered_data if rating_filter[0] <= item['rating'] <= rating_filter[1]]
+        
+        st.markdown(f"**Showing {len(filtered_data)} of {len(data)} feedback entries**")
+        
+        # Display options
+        display_option = st.radio(
+            "Display Format:",
+            ["Table View", "Card View", "Export Data"],
+            horizontal=True
+        )
+        
+        if display_option == "Table View":
+            # Create DataFrame for table view
+            df_data = []
+            for item in filtered_data:
+                df_data.append({
+                    'ID': item['id'],
+                    'Service': item['service_type'],
+                    'Feedback': item['feedback_text'][:100] + "..." if len(item['feedback_text']) > 100 else item['feedback_text'],
+                    'Rating': item['rating'],
+                    'Sentiment': item['predicted_sentiment'].title(),
+                    'Sentiment Score': f"{item['sentiment_score']:.3f}",
+                    'Date': item['date'].strftime('%Y-%m-%d'),
+                    'Age Group': item.get('age_group', 'N/A'),
+                    'Gender': item.get('gender', 'N/A'),
+                    'Insurance': item.get('insurance_type', 'N/A')
+                })
+            
+            df = pd.DataFrame(df_data)
+            st.dataframe(df, use_container_width=True, height=400)
+            
+        elif display_option == "Card View":
+            # Card view for better readability
+            for i, item in enumerate(filtered_data[:20]):  # Show first 20
+                with st.expander(f"Feedback {item['id']} - {item['service_type']} (Rating: {item['rating']}/5)"):
+                    col1, col2 = st.columns([3, 1])
+                    
+                    with col1:
+                        st.write(f"**Feedback:** {item['feedback_text']}")
+                        st.write(f"**Service:** {item['service_type']}")
+                        st.write(f"**Date:** {item['date'].strftime('%Y-%m-%d')}")
+                    
+                    with col2:
+                        sentiment_color = "green" if item['predicted_sentiment'] == 'positive' else "red" if item['predicted_sentiment'] == 'negative' else "orange"
+                        st.markdown(f"**Sentiment:** :{sentiment_color}[{item['predicted_sentiment'].title()}]")
+                        st.markdown(f"**Score:** {item['sentiment_score']:.3f}")
+                        st.markdown(f"**Rating:** {item['rating']}/5")
+                        
+                        # Demographics
+                        if 'age_group' in item:
+                            st.markdown(f"**Age:** {item['age_group']}")
+                            st.markdown(f"**Gender:** {item['gender']}")
+                            st.markdown(f"**Insurance:** {item['insurance_type']}")
+            
+            if len(filtered_data) > 20:
+                st.info(f"Showing first 20 of {len(filtered_data)} entries. Use filters to narrow down results.")
+                
+        elif display_option == "Export Data":
+            st.markdown("#### 📥 Export Options")
+            
+            # Prepare export data
+            export_data = []
+            for item in filtered_data:
+                export_data.append({
+                    'ID': item['id'],
+                    'Service_Type': item['service_type'],
+                    'Feedback_Text': item['feedback_text'],
+                    'Rating': item['rating'],
+                    'Predicted_Sentiment': item['predicted_sentiment'],
+                    'Sentiment_Score': item['sentiment_score'],
+                    'Date': item['date'].strftime('%Y-%m-%d'),
+                    'Age_Group': item.get('age_group', ''),
+                    'Gender': item.get('gender', ''),
+                    'Insurance_Type': item.get('insurance_type', ''),
+                    'Has_Combination': item.get('has_combination', False)
+                })
+            
+            export_df = pd.DataFrame(export_data)
+            
+            col1, col2, col3 = st.columns(3)
+            
+            with col1:
+                csv = export_df.to_csv(index=False)
+                st.download_button(
+                    label="📊 Download CSV",
+                    data=csv,
+                    file_name=f"healthcare_feedback_{datetime.now().strftime('%Y%m%d')}.csv",
+                    mime="text/csv"
+                )
+            
+            with col2:
+                json_data = export_df.to_json(orient='records', indent=2)
+                st.download_button(
+                    label="📄 Download JSON",
+                    data=json_data,
+                    file_name=f"healthcare_feedback_{datetime.now().strftime('%Y%m%d')}.json",
+                    mime="application/json"
+                )
+            
+            with col3:
+                excel_buffer = io.BytesIO()
+                export_df.to_excel(excel_buffer, index=False, engine='openpyxl')
+                excel_buffer.seek(0)
+                st.download_button(
+                    label="📈 Download Excel",
+                    data=excel_buffer.getvalue(),
+                    file_name=f"healthcare_feedback_{datetime.now().strftime('%Y%m%d')}.xlsx",
+                    mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+                )
+        
+        # Data insights
+        st.markdown("---")
+        st.markdown("#### 📊 Data Insights")
+        
+        col1, col2 = st.columns(2)
+        
+        with col1:
+            st.markdown("**Sentiment Distribution:**")
+            sentiment_counts = Counter(item['predicted_sentiment'] for item in filtered_data)
+            for sentiment, count in sentiment_counts.items():
+                percentage = (count / len(filtered_data)) * 100
+                st.write(f"- {sentiment.title()}: {count} ({percentage:.1f}%)")
+        
+        with col2:
+            st.markdown("**Service Distribution:**")
+            service_counts = Counter(item['service_type'] for item in filtered_data)
+            for service, count in service_counts.items():
+                percentage = (count / len(filtered_data)) * 100
+                st.write(f"- {service}: {count} ({percentage:.1f}%)")
+        
+        # Sample feedback examples
+        st.markdown("---")
+        st.markdown("#### 💬 Sample Feedback Examples")
+        
+        sample_positive = [item for item in filtered_data if item['predicted_sentiment'] == 'positive'][:3]
+        sample_negative = [item for item in filtered_data if item['predicted_sentiment'] == 'negative'][:3]
+        
+        col1, col2 = st.columns(2)
+        
+        with col1:
+            st.markdown("**🟢 Positive Examples:**")
+            for item in sample_positive:
+                st.write(f"*\"{item['feedback_text'][:100]}...\"*")
+                st.caption(f"Service: {item['service_type']} | Rating: {item['rating']}/5")
+        
+        with col2:
+            st.markdown("**🔴 Negative Examples:**")
+            for item in sample_negative:
+                st.write(f"*\"{item['feedback_text'][:100]}...\"*")
+                st.caption(f"Service: {item['service_type']} | Rating: {item['rating']}/5")
     
     with tab7:
         st.markdown("### Key Insights & Recommendations")

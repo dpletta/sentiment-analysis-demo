@@ -330,9 +330,12 @@ def create_chat_interface():
     
     # Display chat history
     for message in st.session_state.chat_history:
-        with st.chat_message(message["role"]):
-            st.write(message["content"])
-            if message["role"] == "assistant" and "confidence" in message:
+        # Use compatible message display for older Streamlit versions
+        if message["role"] == "user":
+            st.markdown(f"**You:** {message['content']}")
+        else:
+            st.markdown(f"**AI:** {message['content']}")
+            if "confidence" in message:
                 st.caption(f"Confidence: {message['confidence']:.2f}")
     
     # Process question

@@ -15,12 +15,13 @@ This repository contains a **complete proof of concept** for HIPAA-compliant sen
 
 - **🔒 HIPAA Compliant**: Complete local processing with no external data transmission
 - **🎯 Interactive Dashboard**: Beautiful Streamlit interface with Magic UI components
-- **🤖 AI-Powered Assistant**: Hugging Face chatbot that answers questions about your data
-- **🤖 Multi-Method Analysis**: VADER, TF-IDF clustering, LDA topic modeling
-- **🔗 Combination Analysis**: Examine sentiment across service/product combinations  
+- **🤖 AI-Powered Assistant**: Hugging Face chatbot in left sidebar for easy access
+- **📋 Raw Data Overview**: Complete source data view for colleagues to understand the material
+- **🚀 GitHub Actions Ready**: Automated deployment with CI/CD pipeline
+- **🔗 Combination Analysis**: Examine sentiment across service/product combinations
 - **👥 Demographic Clustering**: Sentiment patterns by age, gender, and insurance type
 - **📊 Rich Visualizations**: Publication-ready charts and interactive dashboards
-- **📋 Comprehensive Reporting**: Detailed insights and recommendations
+- **📥 Data Export**: CSV, JSON, Excel download options
 - **🔍 Audit Trail**: Complete logging for compliance requirements
 - **🧪 Empirically Validated**: Built on peer-reviewed research methods
 - **👥 Non-Technical Friendly**: Easy-to-use interface for colleagues
@@ -66,6 +67,41 @@ The setup script will:
 - ✅ Download necessary NLTK data
 - ✅ Create required directories
 - ✅ Validate installation
+
+### 2. Run the Dashboard
+
+```bash
+# Activate virtual environment
+source streamlit_env/bin/activate  # On Windows: streamlit_env\Scripts\activate
+
+# Start the dashboard
+streamlit run streamlit_app.py
+```
+
+### 3. Open Your Browser
+
+Navigate to `http://localhost:8501` to access the dashboard.
+
+## 🔧 Troubleshooting
+
+If you encounter deployment issues:
+
+1. **Check the troubleshooting guide**: See `TROUBLESHOOTING.md` for detailed solutions
+2. **Common fixes**:
+   - Missing dependencies: `pip install -r streamlit_requirements.txt`
+   - Memory issues: Disable AI features in sidebar
+   - Model download fails: Use offline mode for maximum HIPAA compliance
+   - Import errors: Ensure virtual environment is activated
+
+3. **Fallback options**:
+   - The app automatically falls back to simplified AI chatbot if advanced features fail
+   - Use offline mode for maximum HIPAA compliance
+   - Disable AI features entirely if needed
+
+4. **Test deployment**:
+   ```bash
+   python -c "from streamlit_app import main; print('✅ App ready')"
+   ```
 
 ### 2. Run the Demo
 
@@ -148,9 +184,11 @@ The **Streamlit Dashboard** provides a beautiful, interactive interface that mak
 - **🔗 Combination Insights**: Cross-service sentiment patterns
 - **👥 Demographic Analysis**: Sentiment clustering by patient characteristics
 - **📊 Advanced Visualizations**: Word clouds, correlations, and trends
-- **🤖 AI Assistant**: Ask questions about your data and get intelligent answers
+- **📋 Raw Data Overview**: Complete source data view with filters and export options
+- **🤖 Sidebar AI Assistant**: Always-accessible chatbot for data questions
 - **💡 Smart Recommendations**: AI-generated insights and suggestions
 - **🎛️ Easy Controls**: Simple sidebar controls for data exploration
+- **🔒 HIPAA Compliance**: Built-in controls for different compliance levels
 
 ### 🚀 Quick Launch
 

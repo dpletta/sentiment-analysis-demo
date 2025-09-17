@@ -1,20 +1,10 @@
 #!/usr/bin/env python3
 """
-HIPAA-Compliant Sentiment Analysis Setup Script
-==============================================
+Healthcare Sentiment Analysis Dashboard - Setup Script
+=====================================================
 
-This script sets up the environment for the HIPAA-compliant sentiment analysis system.
-It ensures all dependencies are installed and the system is ready for use.
-
-Usage:
-    python setup.py
-
-Features:
-- Installs required Python packages
-- Downloads necessary NLTK data
-- Creates required directories
-- Validates system readiness
-- Provides HIPAA compliance checklist
+Automated setup script for the healthcare sentiment analysis dashboard.
+Supports multiple deployment modes and automatic dependency management.
 
 Author: AI Assistant
 Date: September 2025
@@ -23,37 +13,84 @@ Date: September 2025
 import os
 import sys
 import subprocess
-import pkg_resources
+import platform
 from pathlib import Path
+
+def print_header():
+    """Print setup header."""
+    print("=" * 60)
+    print("🏥 Healthcare Sentiment Analysis Dashboard Setup")
+    print("=" * 60)
+    print()
 
 def check_python_version():
     """Check if Python version is compatible."""
-    if sys.version_info < (3, 8):
-        print("❌ Python 3.8 or higher is required.")
-        print(f"Current version: {sys.version}")
-        return False
-    else:
-        print(f"✅ Python version check passed: {sys.version.split()[0]}")
-        return True
-
-def install_requirements():
-    """Install required packages from requirements.txt."""
-    print("\n📦 Installing required packages...")
+    print("🔍 Checking Python version...")
     
-    requirements_file = Path(__file__).parent / "requirements.txt"
-    if not requirements_file.exists():
-        print("❌ requirements.txt not found!")
-        return False
+    version = sys.version_info
+    if version.major < 3 or (version.major == 3 and version.minor < 8):
+        print("❌ Python 3.8+ is required. Current version:", f"{version.major}.{version.minor}")
+        sys.exit(1)
+    
+    print(f"✅ Python {version.major}.{version.minor}.{version.micro} is compatible")
+    return True
+
+def create_virtual_environment():
+    """Create virtual environment."""
+    print("\n🔧 Setting up virtual environment...")
+    
+    venv_name = "streamlit_env"
+    
+    if os.path.exists(venv_name):
+        print(f"✅ Virtual environment '{venv_name}' already exists")
+        return venv_name
     
     try:
-        subprocess.check_call([
-            sys.executable, "-m", "pip", "install", "-r", str(requirements_file)
-        ])
-        print("✅ All packages installed successfully")
-        return True
+        subprocess.run([sys.executable, "-m", "venv", venv_name], check=True)
+        print(f"✅ Virtual environment '{venv_name}' created successfully")
+        return venv_name
     except subprocess.CalledProcessError as e:
-        print(f"❌ Error installing packages: {e}")
-        return False
+        print(f"❌ Failed to create virtual environment: {e}")
+        sys.exit(1)
+
+def get_pip_command(venv_name):
+    """Get the correct pip command for the virtual environment."""
+    if platform.system() == "Windows":
+        return os.path.join(venv_name, "Scripts", "pip")
+    else:
+        return os.path.join(venv_name, "bin", "pip")
+
+def install_dependencies(venv_name, use_full_requirements=False):
+    """Install dependencies."""
+    print("\n📦 Installing dependencies...")
+    
+    pip_cmd = get_pip_command(venv_name)
+    
+    # Upgrade pip first
+    try:
+        subprocess.run([pip_cmd, "install", "--upgrade", "pip"], check=True)
+        print("✅ pip upgraded successfully")
+    except subprocess.CalledProcessError as e:
+        print(f"⚠️ Failed to upgrade pip: {e}")
+    
+    # Choose requirements file
+    if use_full_requirements and os.path.exists("requirements-full.txt"):
+        req_file = "requirements-full.txt"
+        print("🤖 Installing with full AI capabilities...")
+    else:
+        req_file = "requirements.txt"
+        print("📊 Installing basic requirements (AI features will use fallback)...")
+    
+    if not os.path.exists(req_file):
+        print(f"❌ Requirements file '{req_file}' not found")
+        sys.exit(1)
+    
+    try:
+        subprocess.run([pip_cmd, "install", "-r", req_file], check=True)
+        print(f"✅ Dependencies installed from {req_file}")
+    except subprocess.CalledProcessError as e:
+        print(f"❌ Failed to install dependencies: {e}")
+        sys.exit(1)
 
 def download_nltk_data():
     """Download required NLTK data."""
@@ -61,254 +98,98 @@ def download_nltk_data():
     
     try:
         import nltk
-        
-        # Required NLTK data
-        nltk_downloads = [
-            'vader_lexicon',
-            'stopwords', 
-            'punkt',
-            'wordnet',
-            'averaged_perceptron_tagger'
-        ]
-        
-        for item in nltk_downloads:
-            print(f"  Downloading {item}...")
-            nltk.download(item, quiet=True)
-        
+        nltk.download('vader_lexicon', quiet=True)
+        nltk.download('punkt', quiet=True)
+        nltk.download('stopwords', quiet=True)
         print("✅ NLTK data downloaded successfully")
-        return True
-        
     except ImportError:
-        print("❌ NLTK not found. Please install requirements first.")
-        return False
+        print("⚠️ NLTK not available, skipping data download")
     except Exception as e:
-        print(f"❌ Error downloading NLTK data: {e}")
-        return False
+        print(f"⚠️ Failed to download NLTK data: {e}")
 
 def create_directories():
-    """Create necessary directories for the analysis."""
-    print("\n📁 Creating directory structure...")
+    """Create required directories."""
+    print("\n📁 Creating required directories...")
     
-    directories = [
-        "data",
-        "output", 
-        "models",
-        "logs"
-    ]
+    directories = ["demo_output", "ui_reference"]
     
     for directory in directories:
         Path(directory).mkdir(exist_ok=True)
-        print(f"  ✅ Created/verified: {directory}/")
-    
-    return True
+        print(f"✅ Directory '{directory}' ready")
 
-def validate_installation():
-    """Validate that all components are working properly."""
-    print("\n🔍 Validating installation...")
+def test_installation(venv_name):
+    """Test the installation."""
+    print("\n🧪 Testing installation...")
     
-    # Test imports
-    test_imports = [
-        ("numpy", "np"),
-        ("pandas", "pd"), 
-        ("sklearn", None),
-        ("tensorflow", "tf"),
-        ("matplotlib.pyplot", "plt"),
-        ("seaborn", "sns"),
-        ("nltk", None),
-        ("plotly", None)
+    python_cmd = os.path.join(venv_name, "bin", "python") if platform.system() != "Windows" else os.path.join(venv_name, "Scripts", "python")
+    
+    tests = [
+        ("Streamlit app", "from streamlit_app import main; print('✅ Streamlit app works')"),
+        ("Sentiment analyzer", "from simplified_demo import SimplifiedSentimentAnalyzer; print('✅ Sentiment analyzer works')"),
+        ("Simplified chatbot", "from simple_ai_chatbot import SimpleHealthcareChatbot; print('✅ Simplified chatbot works')"),
     ]
     
-    failed_imports = []
-    
-    for module, alias in test_imports:
+    for test_name, test_code in tests:
         try:
-            if alias:
-                exec(f"import {module} as {alias}")
+            result = subprocess.run([python_cmd, "-c", test_code], 
+                                  capture_output=True, text=True, timeout=30)
+            if result.returncode == 0:
+                print(f"✅ {test_name} test passed")
             else:
-                exec(f"import {module}")
-            print(f"  ✅ {module}")
-        except ImportError as e:
-            print(f"  ❌ {module}: {e}")
-            failed_imports.append(module)
+                print(f"⚠️ {test_name} test failed: {result.stderr}")
+        except subprocess.TimeoutExpired:
+            print(f"⚠️ {test_name} test timed out")
+        except Exception as e:
+            print(f"⚠️ {test_name} test error: {e}")
+
+def print_completion_message(venv_name):
+    """Print completion message with instructions."""
+    print("\n" + "=" * 60)
+    print("🎉 Setup Complete!")
+    print("=" * 60)
+    print()
+    print("📋 Next Steps:")
+    print()
     
-    if failed_imports:
-        print(f"\n❌ Failed to import: {', '.join(failed_imports)}")
-        return False
+    if platform.system() == "Windows":
+        print(f"1. Activate virtual environment:")
+        print(f"   {venv_name}\\Scripts\\activate")
     else:
-        print("\n✅ All imports successful")
-        return True
-
-def test_tensorflow():
-    """Test TensorFlow installation."""
-    print("\n🧠 Testing TensorFlow...")
+        print(f"1. Activate virtual environment:")
+        print(f"   source {venv_name}/bin/activate")
     
-    try:
-        import tensorflow as tf
-        
-        # Check if GPU is available (optional)
-        if tf.config.list_physical_devices('GPU'):
-            print("  ✅ GPU support detected")
-        else:
-            print("  ℹ️  Running on CPU (this is fine for the demo)")
-        
-        # Simple computation test
-        a = tf.constant([[1.0, 2.0], [3.0, 4.0]])
-        b = tf.constant([[1.0, 1.0], [0.0, 1.0]])
-        c = tf.matmul(a, b)
-        
-        print(f"  ✅ TensorFlow computation test passed")
-        print(f"  Version: {tf.__version__}")
-        return True
-        
-    except Exception as e:
-        print(f"  ❌ TensorFlow test failed: {e}")
-        return False
-
-def print_hipaa_compliance_checklist():
-    """Print HIPAA compliance checklist for users."""
-    print("\n" + "="*60)
-    print("🏥 HIPAA COMPLIANCE CHECKLIST")
-    print("="*60)
-    
-    checklist = [
-        "✓ All processing occurs locally (no cloud APIs)",
-        "✓ No external data transmission",
-        "✓ PII detection and redaction implemented", 
-        "✓ Audit logging enabled",
-        "✓ Secure local data storage",
-        "✓ No persistent storage of sensitive data",
-        "✓ Local model training and inference only"
-    ]
-    
-    for item in checklist:
-        print(f"  {item}")
-    
-    print("\n📋 Additional HIPAA Requirements to Consider:")
-    additional_requirements = [
-        "• Implement access controls for the analysis system",
-        "• Ensure secure deletion of temporary files",
-        "• Regular security audits of the analysis environment", 
-        "• Staff training on data handling procedures",
-        "• Incident response procedures",
-        "• Regular backup and recovery testing",
-        "• Network security measures"
-    ]
-    
-    for req in additional_requirements:
-        print(f"  {req}")
-
-def create_quick_start_guide():
-    """Create a quick start guide file."""
-    print("\n📖 Creating quick start guide...")
-    
-    guide_content = """# HIPAA-Compliant Sentiment Analysis - Quick Start Guide
-
-## Overview
-This system provides a completely local sentiment analysis solution suitable for HIPAA-compliant environments. All processing occurs on your local machine with no external data transmission.
-
-## Getting Started
-
-### 1. Run the Analysis
-```python
-python hipaa_sentiment_analysis.py
-```
-
-### 2. Interactive Analysis (Jupyter)
-```bash
-jupyter notebook sentiment_analysis_demo.ipynb
-```
-
-### 3. Custom Data Analysis
-```python
-from hipaa_sentiment_analysis import HIPAACompliantSentimentAnalyzer
-
-# Initialize analyzer
-analyzer = HIPAACompliantSentimentAnalyzer()
-
-# Load your data (replace with your CSV file)
-# df = pd.read_csv('your_feedback_data.csv')
-# analyzer.df = df
-
-# Run analysis
-analyzer.analyze_sentiment_multiple_approaches()
-analyzer.create_comprehensive_visualizations()
-```
-
-## Output Files
-- `comprehensive_sentiment_analysis.png` - Main visualization dashboard
-- `interactive_dashboard.html` - Interactive Plotly dashboard
-- `sentiment_analysis_report.txt` - Detailed analysis report
-- `sentiment_analysis_YYYYMMDD_HHMMSS.log` - Audit log
-
-## Data Format Requirements
-Your CSV file should contain at minimum:
-- `feedback_text`: The text feedback to analyze
-- `service_type`: Type of service/product (optional)
-- `rating`: Numerical rating (optional)
-- `date`: Date of feedback (optional)
-
-## HIPAA Compliance Features
-✓ Local processing only
-✓ No external API calls
-✓ PII detection and redaction
-✓ Comprehensive audit logging
-✓ Secure local storage
-
-## Support
-For questions or issues, refer to the comprehensive documentation in the main script file.
-"""
-    
-    with open("QUICK_START.md", "w") as f:
-        f.write(guide_content)
-    
-    print("  ✅ Quick start guide created: QUICK_START.md")
+    print()
+    print("2. Run the dashboard:")
+    print("   streamlit run streamlit_app.py")
+    print()
+    print("3. Open your browser to: http://localhost:8501")
+    print()
+    print("🔒 HIPAA Compliance:")
+    print("- All processing happens locally")
+    print("- No external data transmission")
+    print("- Use offline mode for maximum compliance")
+    print()
+    print("📚 Documentation:")
+    print("- README.md: General information")
+    print("- TROUBLESHOOTING.md: Common issues and solutions")
+    print("- HIPAA_COMPLIANCE.md: Compliance details")
+    print()
 
 def main():
     """Main setup function."""
-    print("🏥 HIPAA-Compliant Sentiment Analysis - Setup")
-    print("=" * 50)
+    print_header()
     
-    # Check Python version
-    if not check_python_version():
-        return False
+    # Check for command line arguments
+    use_full_requirements = "--full" in sys.argv or "--ai" in sys.argv
     
-    # Install requirements
-    if not install_requirements():
-        return False
-    
-    # Download NLTK data
-    if not download_nltk_data():
-        return False
-    
-    # Create directories
-    if not create_directories():
-        return False
-    
-    # Validate installation
-    if not validate_installation():
-        return False
-    
-    # Test TensorFlow
-    if not test_tensorflow():
-        return False
-    
-    # Create quick start guide
-    create_quick_start_guide()
-    
-    # Print HIPAA compliance information
-    print_hipaa_compliance_checklist()
-    
-    print("\n" + "="*60)
-    print("🎉 SETUP COMPLETED SUCCESSFULLY!")
-    print("="*60)
-    print("\nNext steps:")
-    print("1. Run the demo: python hipaa_sentiment_analysis.py")
-    print("2. Check QUICK_START.md for detailed instructions")
-    print("3. Review output files in the ./output directory")
-    print("\n✅ Your system is ready for HIPAA-compliant sentiment analysis!")
-    
-    return True
+    # Run setup steps
+    check_python_version()
+    venv_name = create_virtual_environment()
+    install_dependencies(venv_name, use_full_requirements)
+    download_nltk_data()
+    create_directories()
+    test_installation(venv_name)
+    print_completion_message(venv_name)
 
 if __name__ == "__main__":
-    success = main()
-    sys.exit(0 if success else 1)
+    main()
