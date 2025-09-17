@@ -14,7 +14,7 @@ echo "The app will open in your browser automatically..."
 echo ""
 
 # Run the integrated Streamlit app
-streamlit run streamlit_app_integrated.py --server.port 8502 --server.browser.gatherUsageStats false
+streamlit run streamlit_app_integrated.py --server.port 8502 --browser.gatherUsageStats false
 
 echo ""
 echo "Dashboard closed. Thank you for using the Healthcare Sentiment Analysis Dashboard!"
