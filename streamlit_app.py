@@ -819,7 +819,7 @@ def main():
                         st.write(f"**Insurance:** {combo.get('insurance_type', 'Unknown')}")
         
         else:
-            st.info("No service combinations found in the current dataset.")
+            st.warning("No service combinations found in the feedback data.")
     
     with tab5:
         st.markdown("### Advanced Visualizations")
