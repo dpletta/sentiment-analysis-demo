@@ -595,6 +595,17 @@ def main():
     combinations = analysis_data['combinations']
     insights = analysis_data['insights']
     
+    # Create analyzer instance for additional analysis
+    analyzer = SimplifiedSentimentAnalyzer()
+    analyzer.data = data  # Use the loaded data
+    analyzer.analysis_results = {
+        'service_analysis': service_analysis,
+        'combinations': combinations,
+        'insights': insights,
+        'demographic_analysis': analysis_data.get('demographic_analysis', {}),
+        'combination_patterns': analysis_data.get('combination_patterns', {})
+    }
+    
     # Prepare data context for AI chatbot
     if 'data_context' not in st.session_state:
         if AI_CHATBOT_AVAILABLE:
