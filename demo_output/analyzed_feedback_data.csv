@@ -1,0 +1,501 @@
+id,service_type,feedback_text,predicted_sentiment,sentiment_score,rating,date
+FB_0001,Home Healthcare,Exceptional Home Healthcare quality. Will definitely return. Appointment scheduling was convenient.,positive,0.2727272727272727,4,2024-10-06
+FB_0002,Urgent Care,Average Urgent Care experience. Met basic expectations.,neutral,0,3,2025-09-02
+FB_0003,Emergency Care,The Emergency Care was excellent. Staff was professional and caring.,positive,0.3,5,2025-05-28
+FB_0004,Surgical Procedures,Disappointed with Surgical Procedures. Long wait times and poor communication.,negative,-0.2,1,2024-09-25
+FB_0005,Radiology Services,Very satisfied with Radiology Services. Quick and efficient service. Follow-up care was thorough.,positive,0.23076923076923078,4,2025-08-01
+FB_0006,Radiology Services,Great experience with Radiology Services. Everything went smoothly.,positive,0.125,4,2025-01-25
+FB_0007,Preventive Care,Amazing Preventive Care. The staff was wonderful and caring. Follow-up care was thorough.,positive,0.3076923076923077,5,2024-11-26
+FB_0008,Mental Health Counseling,Disappointed with Mental Health Counseling. Long wait times and poor communication.,negative,-0.18181818181818182,2,2025-08-08
+FB_0009,Mental Health Counseling,The Mental Health Counseling was reasonable. Nothing special. Follow-up care was thorough.,positive,0.08333333333333333,3,2025-03-12
+FB_0010,Laboratory Testing,Exceptional Laboratory Testing quality. Will definitely return.,positive,0.2857142857142857,4,2024-11-10
+FB_0011,Home Healthcare,The Home Healthcare team was knowledgeable and helpful throughout. Billing process was transparent.,positive,0.23076923076923078,5,2024-10-25
+FB_0012,Urgent Care,Awful Urgent Care. Worst experience I've ever had.,negative,-0.25,1,2025-05-23
+FB_0013,Telemedicine Consultation,The Telemedicine Consultation was reasonable. Nothing special. Appointment scheduling was convenient.,positive,0.09090909090909091,4,2025-06-01
+FB_0014,Home Healthcare,Perfect Home Healthcare experience. Exceeded my expectations. Appointment scheduling was convenient.,positive,0.18181818181818182,4,2024-12-04
+FB_0015,Preventive Care,Amazing Preventive Care. The staff was wonderful and caring.,positive,0.3333333333333333,5,2025-03-16
+FB_0016,Mental Health Counseling,"The Mental Health Counseling was okay. Some good aspects, some areas for improvement.",positive,0.07692307692307693,3,2025-08-24
+FB_0017,Emergency Care,Very satisfied with Emergency Care. Quick and efficient service.,positive,0.2222222222222222,5,2024-11-16
+FB_0018,Emergency Care,Perfect Emergency Care experience. Exceeded my expectations.,positive,0.14285714285714285,4,2024-10-04
+FB_0019,Urgent Care,Exceptional Urgent Care quality. Will definitely return.,positive,0.2857142857142857,5,2025-07-22
+FB_0020,Pharmacy Services,Perfect Pharmacy Services experience. Exceeded my expectations. Follow-up care was thorough.,positive,0.18181818181818182,4,2025-01-01
+FB_0021,Emergency Care,The Emergency Care was fine. Could be better but wasn't terrible.,negative,-0.09090909090909091,3,2025-07-01
+FB_0022,Laboratory Testing,Disappointed with Laboratory Testing. Long wait times and poor communication.,negative,-0.2,2,2025-09-08
+FB_0023,Emergency Care,The Emergency Care was fine. Could be better but wasn't terrible. Appointment scheduling was convenient.,neutral,0,3,2025-08-05
+FB_0024,Urgent Care,Outstanding Urgent Care experience. Highly recommend to others.,positive,0.25,4,2025-07-14
+FB_0025,Home Healthcare,Very satisfied with Home Healthcare. Quick and efficient service. Location was easily accessible.,positive,0.23076923076923078,5,2025-06-01
+FB_0026,Preventive Care,Poor Preventive Care quality. Multiple issues during the visit.,neutral,0,2,2024-10-09
+FB_0027,Home Healthcare,Perfect Home Healthcare experience. Exceeded my expectations. Appointment scheduling was convenient.,positive,0.18181818181818182,4,2025-03-28
+FB_0028,Telemedicine Consultation,Poor Telemedicine Consultation quality. Multiple issues during the visit.,neutral,0,1,2025-08-12
+FB_0029,Urgent Care,Poor Urgent Care quality. Multiple issues during the visit. The facility was clean and well-organized.,positive,0.06666666666666667,2,2025-08-12
+FB_0030,Preventive Care,Perfect Preventive Care experience. Exceeded my expectations. Appointment scheduling was convenient.,positive,0.18181818181818182,5,2025-05-16
+FB_0031,Surgical Procedures,Standard Surgical Procedures quality. Neither particularly good nor bad. Billing process was transparent.,positive,0.15384615384615385,4,2025-02-13
+FB_0032,Radiology Services,The Radiology Services was excellent. Staff was professional and caring.,positive,0.3,4,2025-08-17
+FB_0033,Radiology Services,The Radiology Services was subpar. Staff seemed unprepared and rushed. Appointment scheduling was convenient.,negative,-0.07142857142857142,3,2025-01-31
+FB_0034,Physical Therapy,Exceptional Physical Therapy quality. Will definitely return.,positive,0.2857142857142857,4,2025-02-03
+FB_0035,Preventive Care,The Preventive Care was excellent. Staff was professional and caring.,positive,0.3,4,2025-06-24
+FB_0036,Radiology Services,The Radiology Services team was knowledgeable and helpful throughout.,positive,0.2222222222222222,4,2025-06-25
+FB_0037,Radiology Services,Amazing Radiology Services. The staff was wonderful and caring. Billing process was transparent.,positive,0.3076923076923077,5,2025-02-13
+FB_0038,Urgent Care,Acceptable Urgent Care. Got the job done. Follow-up care was thorough.,positive,0.09090909090909091,3,2025-08-19
+FB_0039,Specialist Consultation,Disappointed with Specialist Consultation. Long wait times and poor communication.,negative,-0.2,1,2025-08-23
+FB_0040,Specialist Consultation,Very satisfied with Specialist Consultation. Quick and efficient service. Location was easily accessible.,positive,0.23076923076923078,4,2025-06-14
+FB_0041,Emergency Care,Poor Emergency Care quality. Multiple issues during the visit.,neutral,0,3,2025-05-14
+FB_0042,Specialist Consultation,The Specialist Consultation was subpar. Staff seemed unprepared and rushed.,negative,-0.2,3,2024-12-02
+FB_0043,Preventive Care,Exceptional Preventive Care quality. Will definitely return. Follow-up care was thorough.,positive,0.2727272727272727,4,2025-05-05
+FB_0044,Radiology Services,Exceptional Radiology Services quality. Will definitely return.,positive,0.2857142857142857,4,2025-09-13
+FB_0045,Surgical Procedures,The Surgical Procedures was subpar. Staff seemed unprepared and rushed. Appointment scheduling was convenient.,negative,-0.07142857142857142,3,2025-05-05
+FB_0046,Physical Therapy,Average Physical Therapy experience. Met basic expectations.,neutral,0,4,2025-04-25
+FB_0047,Physical Therapy,Exceptional Physical Therapy quality. Will definitely return.,positive,0.2857142857142857,4,2024-10-11
+FB_0048,Preventive Care,Outstanding Preventive Care experience. Highly recommend to others.,positive,0.25,4,2025-05-05
+FB_0049,Emergency Care,"The Emergency Care was okay. Some good aspects, some areas for improvement. Location was easily accessible.",positive,0.125,3,2025-03-26
+FB_0050,Mental Health Counseling,Terrible Mental Health Counseling experience. Very unprofessional staff.,negative,-0.25,2,2025-08-22
+FB_0051,Emergency Care,Terrible Emergency Care experience. Very unprofessional staff. Follow-up care was thorough.,negative,-0.09090909090909091,1,2024-10-26
+FB_0052,Pharmacy Services,Perfect Pharmacy Services experience. Exceeded my expectations.,positive,0.14285714285714285,5,2024-12-04
+FB_0053,Telemedicine Consultation,Very satisfied with Telemedicine Consultation. Quick and efficient service.,positive,0.2222222222222222,5,2024-11-23
+FB_0054,Preventive Care,Very satisfied with Preventive Care. Quick and efficient service. Follow-up care was thorough.,positive,0.23076923076923078,4,2025-03-18
+FB_0055,Mental Health Counseling,The Mental Health Counseling was subpar. Staff seemed unprepared and rushed.,negative,-0.18181818181818182,3,2025-02-21
+FB_0056,Specialist Consultation,Poor Specialist Consultation quality. Multiple issues during the visit.,neutral,0,1,2025-02-18
+FB_0057,Telemedicine Consultation,Great experience with Telemedicine Consultation. Everything went smoothly.,positive,0.125,5,2024-10-10
+FB_0058,Urgent Care,The Urgent Care was fine. Could be better but wasn't terrible. The facility was clean and well-organized.,neutral,0,4,2025-08-29
+FB_0059,Surgical Procedures,Perfect Surgical Procedures experience. Exceeded my expectations.,positive,0.14285714285714285,4,2025-05-26
+FB_0060,Telemedicine Consultation,Frustrated with Telemedicine Consultation. Nothing went as expected.,negative,-0.125,1,2025-04-28
+FB_0061,Laboratory Testing,Frustrated with Laboratory Testing. Nothing went as expected.,negative,-0.125,3,2025-04-01
+FB_0062,Telemedicine Consultation,Exceptional Telemedicine Consultation quality. Will definitely return. Follow-up care was thorough.,positive,0.2727272727272727,4,2025-07-24
+FB_0063,Specialist Consultation,Great experience with Specialist Consultation. Everything went smoothly.,positive,0.125,4,2025-03-04
+FB_0064,Specialist Consultation,The Specialist Consultation was excellent. Staff was professional and caring.,positive,0.3,4,2024-12-25
+FB_0065,Preventive Care,Poor Preventive Care quality. Multiple issues during the visit.,neutral,0,1,2024-10-12
+FB_0066,Laboratory Testing,The Laboratory Testing was subpar. Staff seemed unprepared and rushed.,negative,-0.2,2,2025-01-01
+FB_0067,Pharmacy Services,Awful Pharmacy Services. Worst experience I've ever had.,negative,-0.25,2,2024-12-08
+FB_0068,Physical Therapy,Amazing Physical Therapy. The staff was wonderful and caring.,positive,0.3333333333333333,4,2024-11-06
+FB_0069,Specialist Consultation,The Specialist Consultation was excellent. Staff was professional and caring.,positive,0.3,4,2025-02-09
+FB_0070,Specialist Consultation,Awful Specialist Consultation. Worst experience I've ever had.,negative,-0.25,2,2024-10-07
+FB_0071,Mental Health Counseling,Unsatisfactory Mental Health Counseling experience. Would not recommend.,neutral,0,2,2024-12-28
+FB_0072,Home Healthcare,Awful Home Healthcare. Worst experience I've ever had. Appointment scheduling was convenient.,negative,-0.08333333333333333,3,2025-04-12
+FB_0073,Mental Health Counseling,"The Mental Health Counseling was okay. Some good aspects, some areas for improvement. Appointment scheduling was convenient.",positive,0.11764705882352941,4,2024-11-09
+FB_0074,Emergency Care,The Emergency Care team was knowledgeable and helpful throughout.,positive,0.2222222222222222,5,2025-01-07
+FB_0075,Radiology Services,The Radiology Services was excellent. Staff was professional and caring.,positive,0.3,4,2025-02-12
+FB_0076,Mental Health Counseling,Perfect Mental Health Counseling experience. Exceeded my expectations. Appointment scheduling was convenient.,positive,0.16666666666666666,4,2025-01-27
+FB_0077,Physical Therapy,Decent Physical Therapy. About what I expected.,neutral,0,4,2024-11-08
+FB_0078,Urgent Care,The Urgent Care was reasonable. Nothing special.,neutral,0,4,2025-06-28
+FB_0079,Urgent Care,Acceptable Urgent Care. Got the job done. Appointment scheduling was convenient.,positive,0.09090909090909091,4,2024-12-25
+FB_0080,Surgical Procedures,Terrible Surgical Procedures experience. Very unprofessional staff.,negative,-0.2857142857142857,3,2025-04-24
+FB_0081,Mental Health Counseling,Great experience with Mental Health Counseling. Everything went smoothly.,positive,0.1111111111111111,4,2025-07-09
+FB_0082,Physical Therapy,Very satisfied with Physical Therapy. Quick and efficient service.,positive,0.2222222222222222,4,2025-02-17
+FB_0083,Radiology Services,Perfect Radiology Services experience. Exceeded my expectations.,positive,0.14285714285714285,4,2025-02-14
+FB_0084,Radiology Services,The Radiology Services was adequate. Nothing exceptional but acceptable.,positive,0.1111111111111111,4,2025-01-16
+FB_0085,Telemedicine Consultation,The Telemedicine Consultation was fine. Could be better but wasn't terrible.,negative,-0.09090909090909091,4,2024-12-16
+FB_0086,Urgent Care,Poor Urgent Care quality. Multiple issues during the visit.,neutral,0,2,2025-02-06
+FB_0087,Surgical Procedures,Great experience with Surgical Procedures. Everything went smoothly.,positive,0.125,5,2025-06-25
+FB_0088,Surgical Procedures,The Surgical Procedures was adequate. Nothing exceptional but acceptable.,positive,0.1111111111111111,3,2025-08-06
+FB_0089,Home Healthcare,Perfect Home Healthcare experience. Exceeded my expectations. Follow-up care was thorough.,positive,0.18181818181818182,5,2025-04-03
+FB_0090,Mental Health Counseling,Great experience with Mental Health Counseling. Everything went smoothly.,positive,0.1111111111111111,5,2025-04-28
+FB_0091,Radiology Services,Outstanding Radiology Services experience. Highly recommend to others.,positive,0.25,4,2025-03-22
+FB_0092,Mental Health Counseling,Disappointed with Mental Health Counseling. Long wait times and poor communication.,negative,-0.18181818181818182,1,2025-06-07
+FB_0093,Telemedicine Consultation,Poor Telemedicine Consultation quality. Multiple issues during the visit. The facility was clean and well-organized.,positive,0.06666666666666667,3,2025-05-29
+FB_0094,Surgical Procedures,Awful Surgical Procedures. Worst experience I've ever had. Location was easily accessible.,negative,-0.08333333333333333,3,2025-07-21
+FB_0095,Physical Therapy,Average Physical Therapy experience. Met basic expectations.,neutral,0,4,2024-11-27
+FB_0096,Home Healthcare,The Home Healthcare was reasonable. Nothing special.,neutral,0,3,2025-08-10
+FB_0097,Specialist Consultation,Poor Specialist Consultation quality. Multiple issues during the visit. Follow-up care was thorough.,positive,0.07692307692307693,3,2024-11-14
+FB_0098,Emergency Care,Disappointed with Emergency Care. Long wait times and poor communication.,negative,-0.2,2,2024-10-14
+FB_0099,Laboratory Testing,Great experience with Laboratory Testing. Everything went smoothly. Billing process was transparent.,positive,0.16666666666666666,5,2025-07-25
+FB_0100,Radiology Services,Acceptable Radiology Services. Got the job done.,neutral,0,4,2025-06-19
+FB_0101,Urgent Care,Terrible Urgent Care experience. Very unprofessional staff.,negative,-0.2857142857142857,3,2025-01-13
+FB_0102,Surgical Procedures,Exceptional Surgical Procedures quality. Will definitely return.,positive,0.2857142857142857,4,2025-08-04
+FB_0103,Pharmacy Services,Standard Pharmacy Services quality. Neither particularly good nor bad.,positive,0.1111111111111111,4,2025-03-29
+FB_0104,Telemedicine Consultation,Great experience with Telemedicine Consultation. Everything went smoothly. Appointment scheduling was convenient.,positive,0.16666666666666666,5,2025-05-08
+FB_0105,Laboratory Testing,Exceptional Laboratory Testing quality. Will definitely return.,positive,0.2857142857142857,4,2025-08-05
+FB_0106,Mental Health Counseling,Horrible Mental Health Counseling. Complete waste of time and money.,negative,-0.1,1,2024-09-29
+FB_0107,Surgical Procedures,Horrible Surgical Procedures. Complete waste of time and money.,negative,-0.1111111111111111,1,2025-08-01
+FB_0108,Pharmacy Services,The Pharmacy Services team was knowledgeable and helpful throughout.,positive,0.2222222222222222,5,2025-01-18
+FB_0109,Preventive Care,Frustrated with Preventive Care. Nothing went as expected.,negative,-0.125,3,2025-04-01
+FB_0110,Laboratory Testing,Terrible Laboratory Testing experience. Very unprofessional staff.,negative,-0.2857142857142857,1,2025-07-18
+FB_0111,Urgent Care,Outstanding Urgent Care experience. Highly recommend to others.,positive,0.25,4,2025-06-11
+FB_0112,Mental Health Counseling,Terrible Mental Health Counseling experience. Very unprofessional staff.,negative,-0.25,3,2024-11-16
+FB_0113,Pharmacy Services,Standard Pharmacy Services quality. Neither particularly good nor bad. Follow-up care was thorough.,positive,0.15384615384615385,3,2025-04-16
+FB_0114,Telemedicine Consultation,Unsatisfactory Telemedicine Consultation experience. Would not recommend. The facility was clean and well-organized.,positive,0.07692307692307693,3,2025-04-21
+FB_0115,Urgent Care,Acceptable Urgent Care. Got the job done. The facility was clean and well-organized.,positive,0.07692307692307693,4,2025-01-20
+FB_0116,Surgical Procedures,Very satisfied with Surgical Procedures. Quick and efficient service.,positive,0.2222222222222222,5,2025-01-16
+FB_0117,Emergency Care,The Emergency Care was reasonable. Nothing special.,neutral,0,3,2025-07-02
+FB_0118,Physical Therapy,The Physical Therapy was fine. Could be better but wasn't terrible. Appointment scheduling was convenient.,neutral,0,3,2024-12-06
+FB_0119,Radiology Services,Poor Radiology Services quality. Multiple issues during the visit.,neutral,0,2,2025-01-30
+FB_0120,Surgical Procedures,Amazing Surgical Procedures. The staff was wonderful and caring.,positive,0.3333333333333333,4,2024-11-09
+FB_0121,Urgent Care,The Urgent Care team was knowledgeable and helpful throughout.,positive,0.2222222222222222,5,2024-10-14
+FB_0122,Emergency Care,Very satisfied with Emergency Care. Quick and efficient service.,positive,0.2222222222222222,4,2025-09-16
+FB_0123,Radiology Services,Perfect Radiology Services experience. Exceeded my expectations. Appointment scheduling was convenient.,positive,0.18181818181818182,5,2024-09-21
+FB_0124,Pharmacy Services,Horrible Pharmacy Services. Complete waste of time and money. Appointment scheduling was convenient.,neutral,0,2,2024-11-01
+FB_0125,Specialist Consultation,Poor Specialist Consultation quality. Multiple issues during the visit.,neutral,0,3,2025-05-25
+FB_0126,Home Healthcare,Exceptional Home Healthcare quality. Will definitely return.,positive,0.2857142857142857,4,2025-08-18
+FB_0127,Physical Therapy,Terrible Physical Therapy experience. Very unprofessional staff.,negative,-0.2857142857142857,2,2024-09-30
+FB_0128,Pharmacy Services,Terrible Pharmacy Services experience. Very unprofessional staff.,negative,-0.2857142857142857,2,2025-02-05
+FB_0129,Emergency Care,Frustrated with Emergency Care. Nothing went as expected.,negative,-0.125,3,2025-05-12
+FB_0130,Telemedicine Consultation,The Telemedicine Consultation was excellent. Staff was professional and caring.,positive,0.3,5,2024-11-26
+FB_0131,Telemedicine Consultation,Unsatisfactory Telemedicine Consultation experience. Would not recommend.,neutral,0,3,2025-02-03
+FB_0132,Pharmacy Services,Amazing Pharmacy Services. The staff was wonderful and caring.,positive,0.3333333333333333,5,2025-08-02
+FB_0133,Surgical Procedures,Great experience with Surgical Procedures. Everything went smoothly.,positive,0.125,4,2025-06-27
+FB_0134,Laboratory Testing,Perfect Laboratory Testing experience. Exceeded my expectations. Billing process was transparent.,positive,0.18181818181818182,4,2025-01-28
+FB_0135,Emergency Care,Great experience with Emergency Care. Everything went smoothly. Billing process was transparent.,positive,0.16666666666666666,4,2024-10-16
+FB_0136,Preventive Care,The Preventive Care was excellent. Staff was professional and caring. Follow-up care was thorough.,positive,0.2857142857142857,5,2024-11-01
+FB_0137,Surgical Procedures,Poor Surgical Procedures quality. Multiple issues during the visit. Appointment scheduling was convenient.,positive,0.07692307692307693,2,2025-02-05
+FB_0138,Urgent Care,The Urgent Care was excellent. Staff was professional and caring.,positive,0.3,4,2024-09-19
+FB_0139,Physical Therapy,The Physical Therapy was excellent. Staff was professional and caring.,positive,0.3,4,2025-05-25
+FB_0140,Emergency Care,Outstanding Emergency Care experience. Highly recommend to others.,positive,0.25,4,2025-01-05
+FB_0141,Urgent Care,Exceptional Urgent Care quality. Will definitely return.,positive,0.2857142857142857,5,2025-01-19
+FB_0142,Mental Health Counseling,Very satisfied with Mental Health Counseling. Quick and efficient service.,positive,0.2,4,2025-08-13
+FB_0143,Pharmacy Services,Frustrated with Pharmacy Services. Nothing went as expected.,negative,-0.125,3,2025-05-04
+FB_0144,Telemedicine Consultation,Exceptional Telemedicine Consultation quality. Will definitely return.,positive,0.2857142857142857,5,2025-07-03
+FB_0145,Surgical Procedures,Awful Surgical Procedures. Worst experience I've ever had.,negative,-0.25,3,2025-03-08
+FB_0146,Surgical Procedures,Standard Surgical Procedures quality. Neither particularly good nor bad.,positive,0.1111111111111111,3,2024-11-29
+FB_0147,Radiology Services,Amazing Radiology Services. The staff was wonderful and caring. Billing process was transparent.,positive,0.3076923076923077,5,2025-03-04
+FB_0148,Home Healthcare,Unsatisfactory Home Healthcare experience. Would not recommend.,neutral,0,1,2025-07-15
+FB_0149,Preventive Care,Decent Preventive Care. About what I expected.,neutral,0,4,2025-07-28
+FB_0150,Preventive Care,The Preventive Care was adequate. Nothing exceptional but acceptable.,positive,0.1111111111111111,4,2024-10-17
+FB_0151,Physical Therapy,Exceptional Physical Therapy quality. Will definitely return.,positive,0.2857142857142857,5,2024-10-20
+FB_0152,Emergency Care,The Emergency Care was reasonable. Nothing special.,neutral,0,4,2024-12-14
+FB_0153,Telemedicine Consultation,Poor Telemedicine Consultation quality. Multiple issues during the visit.,neutral,0,2,2025-05-24
+FB_0154,Urgent Care,Outstanding Urgent Care experience. Highly recommend to others.,positive,0.25,4,2025-02-02
+FB_0155,Physical Therapy,Disappointed with Physical Therapy. Long wait times and poor communication. The facility was clean and well-organized.,negative,-0.0625,2,2025-03-18
+FB_0156,Laboratory Testing,The Laboratory Testing team was knowledgeable and helpful throughout.,positive,0.2222222222222222,4,2025-06-22
+FB_0157,Physical Therapy,Amazing Physical Therapy. The staff was wonderful and caring.,positive,0.3333333333333333,4,2025-01-06
+FB_0158,Specialist Consultation,Perfect Specialist Consultation experience. Exceeded my expectations.,positive,0.14285714285714285,5,2025-05-10
+FB_0159,Home Healthcare,Perfect Home Healthcare experience. Exceeded my expectations.,positive,0.14285714285714285,4,2025-08-11
+FB_0160,Surgical Procedures,The Surgical Procedures was fine. Could be better but wasn't terrible.,negative,-0.09090909090909091,4,2024-09-29
+FB_0161,Pharmacy Services,Exceptional Pharmacy Services quality. Will definitely return. Billing process was transparent.,positive,0.2727272727272727,5,2025-07-25
+FB_0162,Mental Health Counseling,Great experience with Mental Health Counseling. Everything went smoothly.,positive,0.1111111111111111,5,2025-09-06
+FB_0163,Home Healthcare,The Home Healthcare was excellent. Staff was professional and caring.,positive,0.3,4,2024-11-11
+FB_0164,Urgent Care,Exceptional Urgent Care quality. Will definitely return.,positive,0.2857142857142857,4,2024-11-11
+FB_0165,Laboratory Testing,The Laboratory Testing team was knowledgeable and helpful throughout.,positive,0.2222222222222222,4,2024-10-31
+FB_0166,Emergency Care,The Emergency Care was adequate. Nothing exceptional but acceptable.,positive,0.1111111111111111,4,2025-08-31
+FB_0167,Specialist Consultation,Very satisfied with Specialist Consultation. Quick and efficient service. Follow-up care was thorough.,positive,0.23076923076923078,5,2025-02-17
+FB_0168,Physical Therapy,Great experience with Physical Therapy. Everything went smoothly.,positive,0.125,5,2025-06-25
+FB_0169,Pharmacy Services,Acceptable Pharmacy Services. Got the job done.,neutral,0,4,2025-03-28
+FB_0170,Emergency Care,Outstanding Emergency Care experience. Highly recommend to others. Appointment scheduling was convenient.,positive,0.25,5,2024-12-06
+FB_0171,Laboratory Testing,Amazing Laboratory Testing. The staff was wonderful and caring. Location was easily accessible.,positive,0.3076923076923077,4,2025-01-28
+FB_0172,Laboratory Testing,Terrible Laboratory Testing experience. Very unprofessional staff.,negative,-0.2857142857142857,3,2025-03-11
+FB_0173,Emergency Care,Horrible Emergency Care. Complete waste of time and money. Location was easily accessible.,neutral,0,2,2024-11-09
+FB_0174,Mental Health Counseling,Horrible Mental Health Counseling. Complete waste of time and money.,negative,-0.1,2,2024-10-20
+FB_0175,Radiology Services,The Radiology Services was excellent. Staff was professional and caring.,positive,0.3,5,2025-01-08
+FB_0176,Emergency Care,Very satisfied with Emergency Care. Quick and efficient service.,positive,0.2222222222222222,5,2024-10-09
+FB_0177,Urgent Care,Frustrated with Urgent Care. Nothing went as expected.,negative,-0.125,3,2025-06-30
+FB_0178,Radiology Services,Horrible Radiology Services. Complete waste of time and money.,negative,-0.1111111111111111,2,2025-09-01
+FB_0179,Urgent Care,Perfect Urgent Care experience. Exceeded my expectations.,positive,0.14285714285714285,4,2025-03-16
+FB_0180,Emergency Care,Decent Emergency Care. About what I expected.,neutral,0,4,2025-08-17
+FB_0181,Radiology Services,Outstanding Radiology Services experience. Highly recommend to others.,positive,0.25,5,2025-08-02
+FB_0182,Home Healthcare,The Home Healthcare was excellent. Staff was professional and caring. Follow-up care was thorough.,positive,0.2857142857142857,4,2025-07-15
+FB_0183,Specialist Consultation,The Specialist Consultation team was knowledgeable and helpful throughout.,positive,0.2222222222222222,4,2025-04-02
+FB_0184,Physical Therapy,Disappointed with Physical Therapy. Long wait times and poor communication. Appointment scheduling was convenient.,negative,-0.07142857142857142,1,2024-12-15
+FB_0185,Pharmacy Services,The Pharmacy Services was subpar. Staff seemed unprepared and rushed.,negative,-0.2,1,2025-07-12
+FB_0186,Telemedicine Consultation,The Telemedicine Consultation team was knowledgeable and helpful throughout.,positive,0.2222222222222222,4,2025-06-20
+FB_0187,Pharmacy Services,Amazing Pharmacy Services. The staff was wonderful and caring.,positive,0.3333333333333333,4,2025-01-17
+FB_0188,Surgical Procedures,The Surgical Procedures was subpar. Staff seemed unprepared and rushed.,negative,-0.2,1,2024-11-07
+FB_0189,Telemedicine Consultation,Terrible Telemedicine Consultation experience. Very unprofessional staff.,negative,-0.2857142857142857,1,2025-08-17
+FB_0190,Surgical Procedures,The Surgical Procedures was reasonable. Nothing special.,neutral,0,4,2024-09-18
+FB_0191,Surgical Procedures,Outstanding Surgical Procedures experience. Highly recommend to others.,positive,0.25,4,2025-08-15
+FB_0192,Physical Therapy,Great experience with Physical Therapy. Everything went smoothly.,positive,0.125,5,2025-01-28
+FB_0193,Preventive Care,The Preventive Care was subpar. Staff seemed unprepared and rushed.,negative,-0.2,1,2024-10-17
+FB_0194,Home Healthcare,Standard Home Healthcare quality. Neither particularly good nor bad.,positive,0.1111111111111111,3,2025-02-18
+FB_0195,Laboratory Testing,The Laboratory Testing was reasonable. Nothing special.,neutral,0,3,2025-04-10
+FB_0196,Radiology Services,Exceptional Radiology Services quality. Will definitely return.,positive,0.2857142857142857,4,2024-10-01
+FB_0197,Surgical Procedures,Outstanding Surgical Procedures experience. Highly recommend to others. The facility was clean and well-organized.,positive,0.21428571428571427,5,2025-07-13
+FB_0198,Preventive Care,Great experience with Preventive Care. Everything went smoothly.,positive,0.125,5,2025-03-20
+FB_0199,Home Healthcare,The Home Healthcare was reasonable. Nothing special.,neutral,0,3,2025-04-23
+FB_0200,Specialist Consultation,Outstanding Specialist Consultation experience. Highly recommend to others.,positive,0.25,4,2025-06-30
+FB_0201,Home Healthcare,Outstanding Home Healthcare experience. Highly recommend to others.,positive,0.25,5,2025-07-21
+FB_0202,Pharmacy Services,Frustrated with Pharmacy Services. Nothing went as expected.,negative,-0.125,3,2024-11-07
+FB_0203,Home Healthcare,Disappointed with Home Healthcare. Long wait times and poor communication.,negative,-0.2,3,2024-09-27
+FB_0204,Pharmacy Services,Exceptional Pharmacy Services quality. Will definitely return.,positive,0.2857142857142857,5,2025-03-28
+FB_0205,Laboratory Testing,Very satisfied with Laboratory Testing. Quick and efficient service.,positive,0.2222222222222222,5,2025-08-13
+FB_0206,Physical Therapy,Disappointed with Physical Therapy. Long wait times and poor communication. Location was easily accessible.,negative,-0.07142857142857142,1,2025-03-09
+FB_0207,Radiology Services,Very satisfied with Radiology Services. Quick and efficient service.,positive,0.2222222222222222,5,2024-12-01
+FB_0208,Specialist Consultation,The Specialist Consultation was excellent. Staff was professional and caring. Location was easily accessible.,positive,0.2857142857142857,4,2024-10-07
+FB_0209,Emergency Care,Amazing Emergency Care. The staff was wonderful and caring.,positive,0.3333333333333333,5,2025-02-17
+FB_0210,Pharmacy Services,Outstanding Pharmacy Services experience. Highly recommend to others.,positive,0.25,4,2025-04-25
+FB_0211,Home Healthcare,Horrible Home Healthcare. Complete waste of time and money.,negative,-0.1111111111111111,2,2025-08-25
+FB_0212,Mental Health Counseling,The Mental Health Counseling was excellent. Staff was professional and caring. Follow-up care was thorough.,positive,0.26666666666666666,4,2025-07-09
+FB_0213,Pharmacy Services,Outstanding Pharmacy Services experience. Highly recommend to others. Billing process was transparent.,positive,0.25,4,2025-07-13
+FB_0214,Radiology Services,Poor Radiology Services quality. Multiple issues during the visit.,neutral,0,3,2025-03-20
+FB_0215,Emergency Care,The Emergency Care was excellent. Staff was professional and caring.,positive,0.3,5,2025-08-09
+FB_0216,Laboratory Testing,Frustrated with Laboratory Testing. Nothing went as expected.,negative,-0.125,2,2025-04-22
+FB_0217,Emergency Care,Great experience with Emergency Care. Everything went smoothly. Location was easily accessible.,positive,0.16666666666666666,5,2024-09-29
+FB_0218,Laboratory Testing,Outstanding Laboratory Testing experience. Highly recommend to others. Location was easily accessible.,positive,0.25,5,2024-12-23
+FB_0219,Emergency Care,Exceptional Emergency Care quality. Will definitely return.,positive,0.2857142857142857,4,2025-03-31
+FB_0220,Physical Therapy,Outstanding Physical Therapy experience. Highly recommend to others.,positive,0.25,4,2025-03-23
+FB_0221,Laboratory Testing,Unsatisfactory Laboratory Testing experience. Would not recommend. Appointment scheduling was convenient.,positive,0.09090909090909091,2,2025-06-08
+FB_0222,Physical Therapy,The Physical Therapy was subpar. Staff seemed unprepared and rushed. Billing process was transparent.,negative,-0.07142857142857142,2,2024-12-03
+FB_0223,Specialist Consultation,Great experience with Specialist Consultation. Everything went smoothly.,positive,0.125,5,2025-07-02
+FB_0224,Surgical Procedures,Perfect Surgical Procedures experience. Exceeded my expectations.,positive,0.14285714285714285,5,2024-11-19
+FB_0225,Telemedicine Consultation,Outstanding Telemedicine Consultation experience. Highly recommend to others.,positive,0.25,5,2025-08-29
+FB_0226,Telemedicine Consultation,Exceptional Telemedicine Consultation quality. Will definitely return. The facility was clean and well-organized.,positive,0.23076923076923078,5,2025-01-24
+FB_0227,Specialist Consultation,Disappointed with Specialist Consultation. Long wait times and poor communication.,negative,-0.2,3,2024-10-19
+FB_0228,Mental Health Counseling,Perfect Mental Health Counseling experience. Exceeded my expectations.,positive,0.125,4,2025-01-30
+FB_0229,Emergency Care,Decent Emergency Care. About what I expected.,neutral,0,3,2025-01-02
+FB_0230,Home Healthcare,The Home Healthcare team was knowledgeable and helpful throughout.,positive,0.2222222222222222,5,2024-12-23
+FB_0231,Preventive Care,Awful Preventive Care. Worst experience I've ever had.,negative,-0.25,2,2025-03-03
+FB_0232,Radiology Services,Disappointed with Radiology Services. Long wait times and poor communication.,negative,-0.2,3,2025-03-30
+FB_0233,Emergency Care,Amazing Emergency Care. The staff was wonderful and caring. Location was easily accessible.,positive,0.3076923076923077,4,2025-03-31
+FB_0234,Emergency Care,Unsatisfactory Emergency Care experience. Would not recommend.,neutral,0,2,2024-10-17
+FB_0235,Urgent Care,Unsatisfactory Urgent Care experience. Would not recommend.,neutral,0,1,2025-04-12
+FB_0236,Preventive Care,Great experience with Preventive Care. Everything went smoothly.,positive,0.125,4,2024-10-22
+FB_0237,Home Healthcare,Great experience with Home Healthcare. Everything went smoothly. Follow-up care was thorough.,positive,0.16666666666666666,4,2025-05-31
+FB_0238,Laboratory Testing,Acceptable Laboratory Testing. Got the job done. Appointment scheduling was convenient.,positive,0.09090909090909091,3,2025-08-09
+FB_0239,Pharmacy Services,Average Pharmacy Services experience. Met basic expectations.,neutral,0,3,2024-10-14
+FB_0240,Laboratory Testing,"The Laboratory Testing was okay. Some good aspects, some areas for improvement.",positive,0.08333333333333333,3,2025-06-26
+FB_0241,Physical Therapy,"The Physical Therapy was okay. Some good aspects, some areas for improvement.",positive,0.08333333333333333,3,2025-02-19
+FB_0242,Laboratory Testing,Poor Laboratory Testing quality. Multiple issues during the visit.,neutral,0,3,2025-04-25
+FB_0243,Urgent Care,Poor Urgent Care quality. Multiple issues during the visit.,neutral,0,2,2025-01-20
+FB_0244,Mental Health Counseling,Perfect Mental Health Counseling experience. Exceeded my expectations.,positive,0.125,5,2025-03-06
+FB_0245,Preventive Care,Unsatisfactory Preventive Care experience. Would not recommend.,neutral,0,3,2025-07-09
+FB_0246,Pharmacy Services,Perfect Pharmacy Services experience. Exceeded my expectations.,positive,0.14285714285714285,4,2024-09-18
+FB_0247,Preventive Care,The Preventive Care was fine. Could be better but wasn't terrible. Appointment scheduling was convenient.,neutral,0,4,2025-01-30
+FB_0248,Preventive Care,Amazing Preventive Care. The staff was wonderful and caring. Appointment scheduling was convenient.,positive,0.3076923076923077,5,2025-03-23
+FB_0249,Telemedicine Consultation,Amazing Telemedicine Consultation. The staff was wonderful and caring.,positive,0.3333333333333333,4,2025-03-04
+FB_0250,Emergency Care,The Emergency Care was excellent. Staff was professional and caring.,positive,0.3,4,2024-09-17
+FB_0251,Home Healthcare,Very satisfied with Home Healthcare. Quick and efficient service. Follow-up care was thorough.,positive,0.23076923076923078,5,2024-09-26
+FB_0252,Physical Therapy,Horrible Physical Therapy. Complete waste of time and money.,negative,-0.1111111111111111,1,2025-08-08
+FB_0253,Telemedicine Consultation,Very satisfied with Telemedicine Consultation. Quick and efficient service.,positive,0.2222222222222222,5,2025-07-23
+FB_0254,Pharmacy Services,Outstanding Pharmacy Services experience. Highly recommend to others. Billing process was transparent.,positive,0.25,5,2025-08-16
+FB_0255,Emergency Care,Acceptable Emergency Care. Got the job done.,neutral,0,3,2024-10-29
+FB_0256,Preventive Care,Unsatisfactory Preventive Care experience. Would not recommend. The facility was clean and well-organized.,positive,0.07692307692307693,3,2025-03-21
+FB_0257,Mental Health Counseling,Unsatisfactory Mental Health Counseling experience. Would not recommend.,neutral,0,1,2024-12-23
+FB_0258,Laboratory Testing,The Laboratory Testing was excellent. Staff was professional and caring.,positive,0.3,5,2025-08-26
+FB_0259,Home Healthcare,Great experience with Home Healthcare. Everything went smoothly. The facility was clean and well-organized.,positive,0.14285714285714285,5,2025-08-14
+FB_0260,Laboratory Testing,Outstanding Laboratory Testing experience. Highly recommend to others.,positive,0.25,5,2025-07-11
+FB_0261,Telemedicine Consultation,Great experience with Telemedicine Consultation. Everything went smoothly.,positive,0.125,4,2024-10-02
+FB_0262,Surgical Procedures,Acceptable Surgical Procedures. Got the job done.,neutral,0,3,2025-08-16
+FB_0263,Urgent Care,Horrible Urgent Care. Complete waste of time and money. Appointment scheduling was convenient.,neutral,0,1,2025-06-07
+FB_0264,Telemedicine Consultation,Exceptional Telemedicine Consultation quality. Will definitely return.,positive,0.2857142857142857,5,2025-05-11
+FB_0265,Telemedicine Consultation,Poor Telemedicine Consultation quality. Multiple issues during the visit. The facility was clean and well-organized.,positive,0.06666666666666667,3,2025-04-01
+FB_0266,Pharmacy Services,Great experience with Pharmacy Services. Everything went smoothly.,positive,0.125,5,2025-02-04
+FB_0267,Radiology Services,Very satisfied with Radiology Services. Quick and efficient service.,positive,0.2222222222222222,5,2025-03-13
+FB_0268,Preventive Care,Outstanding Preventive Care experience. Highly recommend to others.,positive,0.25,4,2025-02-09
+FB_0269,Specialist Consultation,"The Specialist Consultation was okay. Some good aspects, some areas for improvement.",positive,0.08333333333333333,4,2025-07-27
+FB_0270,Emergency Care,Exceptional Emergency Care quality. Will definitely return.,positive,0.2857142857142857,5,2025-06-24
+FB_0271,Urgent Care,Perfect Urgent Care experience. Exceeded my expectations. Follow-up care was thorough.,positive,0.18181818181818182,5,2025-04-30
+FB_0272,Home Healthcare,The Home Healthcare was adequate. Nothing exceptional but acceptable. Billing process was transparent.,positive,0.15384615384615385,4,2024-12-29
+FB_0273,Urgent Care,Disappointed with Urgent Care. Long wait times and poor communication. Location was easily accessible.,negative,-0.07142857142857142,3,2025-02-05
+FB_0274,Telemedicine Consultation,The Telemedicine Consultation team was knowledgeable and helpful throughout.,positive,0.2222222222222222,5,2025-03-16
+FB_0275,Radiology Services,The Radiology Services was adequate. Nothing exceptional but acceptable.,positive,0.1111111111111111,4,2025-03-12
+FB_0276,Laboratory Testing,Outstanding Laboratory Testing experience. Highly recommend to others.,positive,0.25,5,2025-02-26
+FB_0277,Laboratory Testing,Poor Laboratory Testing quality. Multiple issues during the visit.,neutral,0,1,2025-06-14
+FB_0278,Surgical Procedures,The Surgical Procedures was subpar. Staff seemed unprepared and rushed. Follow-up care was thorough.,negative,-0.07142857142857142,3,2025-02-01
+FB_0279,Mental Health Counseling,The Mental Health Counseling was fine. Could be better but wasn't terrible.,negative,-0.08333333333333333,4,2025-06-07
+FB_0280,Emergency Care,Outstanding Emergency Care experience. Highly recommend to others.,positive,0.25,5,2025-08-04
+FB_0281,Home Healthcare,Decent Home Healthcare. About what I expected.,neutral,0,3,2024-12-10
+FB_0282,Preventive Care,Exceptional Preventive Care quality. Will definitely return.,positive,0.2857142857142857,4,2025-03-16
+FB_0283,Preventive Care,The Preventive Care team was knowledgeable and helpful throughout.,positive,0.2222222222222222,4,2025-01-08
+FB_0284,Telemedicine Consultation,Great experience with Telemedicine Consultation. Everything went smoothly.,positive,0.125,4,2024-11-08
+FB_0285,Emergency Care,Amazing Emergency Care. The staff was wonderful and caring.,positive,0.3333333333333333,5,2024-12-22
+FB_0286,Radiology Services,The Radiology Services was subpar. Staff seemed unprepared and rushed. Follow-up care was thorough.,negative,-0.07142857142857142,3,2025-08-11
+FB_0287,Surgical Procedures,Great experience with Surgical Procedures. Everything went smoothly. Location was easily accessible.,positive,0.16666666666666666,4,2025-07-13
+FB_0288,Radiology Services,Disappointed with Radiology Services. Long wait times and poor communication.,negative,-0.2,3,2025-07-01
+FB_0289,Pharmacy Services,Great experience with Pharmacy Services. Everything went smoothly.,positive,0.125,4,2025-03-24
+FB_0290,Preventive Care,Average Preventive Care experience. Met basic expectations. Location was easily accessible.,positive,0.09090909090909091,4,2025-07-15
+FB_0291,Home Healthcare,Outstanding Home Healthcare experience. Highly recommend to others.,positive,0.25,4,2024-11-18
+FB_0292,Specialist Consultation,Great experience with Specialist Consultation. Everything went smoothly.,positive,0.125,4,2025-09-03
+FB_0293,Emergency Care,Exceptional Emergency Care quality. Will definitely return.,positive,0.2857142857142857,5,2024-11-05
+FB_0294,Home Healthcare,Exceptional Home Healthcare quality. Will definitely return.,positive,0.2857142857142857,5,2025-01-13
+FB_0295,Mental Health Counseling,The Mental Health Counseling was reasonable. Nothing special. The facility was clean and well-organized.,positive,0.07142857142857142,3,2025-06-29
+FB_0296,Surgical Procedures,Perfect Surgical Procedures experience. Exceeded my expectations. Location was easily accessible.,positive,0.18181818181818182,4,2025-04-10
+FB_0297,Urgent Care,Great experience with Urgent Care. Everything went smoothly.,positive,0.125,4,2025-03-12
+FB_0298,Preventive Care,Awful Preventive Care. Worst experience I've ever had. The facility was clean and well-organized.,negative,-0.07142857142857142,2,2025-01-30
+FB_0299,Mental Health Counseling,The Mental Health Counseling was excellent. Staff was professional and caring. Billing process was transparent.,positive,0.26666666666666666,5,2025-05-13
+FB_0300,Physical Therapy,Decent Physical Therapy. About what I expected. Appointment scheduling was convenient.,positive,0.09090909090909091,4,2024-12-28
+FB_0301,Surgical Procedures,Exceptional Surgical Procedures quality. Will definitely return.,positive,0.2857142857142857,4,2025-02-28
+FB_0302,Preventive Care,The Preventive Care team was knowledgeable and helpful throughout. Follow-up care was thorough.,positive,0.23076923076923078,4,2025-08-23
+FB_0303,Pharmacy Services,Perfect Pharmacy Services experience. Exceeded my expectations. The facility was clean and well-organized.,positive,0.15384615384615385,4,2025-02-09
+FB_0304,Physical Therapy,Decent Physical Therapy. About what I expected.,neutral,0,4,2025-08-25
+FB_0305,Radiology Services,The Radiology Services team was knowledgeable and helpful throughout.,positive,0.2222222222222222,5,2025-08-11
+FB_0306,Radiology Services,Terrible Radiology Services experience. Very unprofessional staff.,negative,-0.2857142857142857,3,2024-10-04
+FB_0307,Specialist Consultation,Outstanding Specialist Consultation experience. Highly recommend to others.,positive,0.25,5,2024-12-06
+FB_0308,Laboratory Testing,Poor Laboratory Testing quality. Multiple issues during the visit.,neutral,0,2,2025-01-04
+FB_0309,Telemedicine Consultation,Very satisfied with Telemedicine Consultation. Quick and efficient service.,positive,0.2222222222222222,5,2024-12-26
+FB_0310,Surgical Procedures,Very satisfied with Surgical Procedures. Quick and efficient service.,positive,0.2222222222222222,5,2025-06-26
+FB_0311,Radiology Services,The Radiology Services was fine. Could be better but wasn't terrible.,negative,-0.09090909090909091,4,2024-09-20
+FB_0312,Specialist Consultation,The Specialist Consultation was excellent. Staff was professional and caring.,positive,0.3,4,2025-02-16
+FB_0313,Specialist Consultation,The Specialist Consultation was excellent. Staff was professional and caring.,positive,0.3,5,2024-10-17
+FB_0314,Specialist Consultation,Disappointed with Specialist Consultation. Long wait times and poor communication.,negative,-0.2,1,2024-12-23
+FB_0315,Home Healthcare,Frustrated with Home Healthcare. Nothing went as expected. Appointment scheduling was convenient.,neutral,0,1,2024-11-28
+FB_0316,Urgent Care,The Urgent Care was excellent. Staff was professional and caring.,positive,0.3,5,2025-07-02
+FB_0317,Radiology Services,Frustrated with Radiology Services. Nothing went as expected.,negative,-0.125,3,2025-01-19
+FB_0318,Urgent Care,Unsatisfactory Urgent Care experience. Would not recommend.,neutral,0,3,2025-04-04
+FB_0319,Home Healthcare,Amazing Home Healthcare. The staff was wonderful and caring.,positive,0.3333333333333333,4,2025-01-25
+FB_0320,Preventive Care,Great experience with Preventive Care. Everything went smoothly.,positive,0.125,5,2024-11-09
+FB_0321,Surgical Procedures,The Surgical Procedures team was knowledgeable and helpful throughout. Follow-up care was thorough.,positive,0.23076923076923078,4,2025-04-18
+FB_0322,Pharmacy Services,Horrible Pharmacy Services. Complete waste of time and money.,negative,-0.1111111111111111,2,2024-12-05
+FB_0323,Urgent Care,Outstanding Urgent Care experience. Highly recommend to others.,positive,0.25,5,2025-02-27
+FB_0324,Laboratory Testing,"The Laboratory Testing was okay. Some good aspects, some areas for improvement. Follow-up care was thorough.",positive,0.125,3,2025-03-24
+FB_0325,Surgical Procedures,Horrible Surgical Procedures. Complete waste of time and money. Location was easily accessible.,neutral,0,2,2024-12-04
+FB_0326,Urgent Care,Outstanding Urgent Care experience. Highly recommend to others.,positive,0.25,4,2025-05-16
+FB_0327,Telemedicine Consultation,Poor Telemedicine Consultation quality. Multiple issues during the visit.,neutral,0,1,2025-07-28
+FB_0328,Radiology Services,Perfect Radiology Services experience. Exceeded my expectations. Appointment scheduling was convenient.,positive,0.18181818181818182,4,2024-12-10
+FB_0329,Physical Therapy,Perfect Physical Therapy experience. Exceeded my expectations.,positive,0.14285714285714285,4,2025-04-23
+FB_0330,Laboratory Testing,The Laboratory Testing was excellent. Staff was professional and caring.,positive,0.3,4,2024-10-19
+FB_0331,Specialist Consultation,The Specialist Consultation was excellent. Staff was professional and caring.,positive,0.3,4,2025-02-16
+FB_0332,Physical Therapy,The Physical Therapy was adequate. Nothing exceptional but acceptable.,positive,0.1111111111111111,4,2025-01-07
+FB_0333,Physical Therapy,The Physical Therapy was fine. Could be better but wasn't terrible.,negative,-0.09090909090909091,3,2025-04-18
+FB_0334,Specialist Consultation,Awful Specialist Consultation. Worst experience I've ever had. Location was easily accessible.,negative,-0.08333333333333333,3,2025-01-08
+FB_0335,Physical Therapy,Acceptable Physical Therapy. Got the job done. The facility was clean and well-organized.,positive,0.07692307692307693,4,2025-06-26
+FB_0336,Urgent Care,Exceptional Urgent Care quality. Will definitely return.,positive,0.2857142857142857,4,2025-03-29
+FB_0337,Pharmacy Services,Poor Pharmacy Services quality. Multiple issues during the visit. Billing process was transparent.,positive,0.07692307692307693,2,2024-12-28
+FB_0338,Laboratory Testing,Outstanding Laboratory Testing experience. Highly recommend to others. Appointment scheduling was convenient.,positive,0.25,5,2025-04-05
+FB_0339,Mental Health Counseling,Amazing Mental Health Counseling. The staff was wonderful and caring. Follow-up care was thorough.,positive,0.2857142857142857,5,2025-04-16
+FB_0340,Specialist Consultation,Disappointed with Specialist Consultation. Long wait times and poor communication. Follow-up care was thorough.,negative,-0.07142857142857142,3,2025-05-20
+FB_0341,Telemedicine Consultation,Horrible Telemedicine Consultation. Complete waste of time and money.,negative,-0.1111111111111111,2,2024-10-01
+FB_0342,Preventive Care,The Preventive Care was fine. Could be better but wasn't terrible.,negative,-0.09090909090909091,4,2025-03-13
+FB_0343,Specialist Consultation,Very satisfied with Specialist Consultation. Quick and efficient service.,positive,0.2222222222222222,5,2024-11-11
+FB_0344,Laboratory Testing,Perfect Laboratory Testing experience. Exceeded my expectations.,positive,0.14285714285714285,4,2025-05-14
+FB_0345,Home Healthcare,The Home Healthcare was subpar. Staff seemed unprepared and rushed.,negative,-0.2,3,2024-09-22
+FB_0346,Laboratory Testing,Outstanding Laboratory Testing experience. Highly recommend to others. Location was easily accessible.,positive,0.25,4,2024-11-28
+FB_0347,Preventive Care,Great experience with Preventive Care. Everything went smoothly.,positive,0.125,5,2025-07-20
+FB_0348,Home Healthcare,Perfect Home Healthcare experience. Exceeded my expectations. Location was easily accessible.,positive,0.18181818181818182,5,2025-08-20
+FB_0349,Surgical Procedures,Amazing Surgical Procedures. The staff was wonderful and caring.,positive,0.3333333333333333,4,2024-12-05
+FB_0350,Surgical Procedures,Terrible Surgical Procedures experience. Very unprofessional staff.,negative,-0.2857142857142857,2,2025-05-10
+FB_0351,Telemedicine Consultation,The Telemedicine Consultation was subpar. Staff seemed unprepared and rushed. Follow-up care was thorough.,negative,-0.07142857142857142,3,2025-08-16
+FB_0352,Preventive Care,Average Preventive Care experience. Met basic expectations.,neutral,0,4,2025-09-01
+FB_0353,Pharmacy Services,Very satisfied with Pharmacy Services. Quick and efficient service.,positive,0.2222222222222222,5,2025-03-10
+FB_0354,Radiology Services,Amazing Radiology Services. The staff was wonderful and caring.,positive,0.3333333333333333,4,2024-10-18
+FB_0355,Laboratory Testing,Amazing Laboratory Testing. The staff was wonderful and caring.,positive,0.3333333333333333,4,2025-09-16
+FB_0356,Telemedicine Consultation,Acceptable Telemedicine Consultation. Got the job done.,neutral,0,4,2024-12-19
+FB_0357,Radiology Services,Standard Radiology Services quality. Neither particularly good nor bad.,positive,0.1111111111111111,3,2025-04-29
+FB_0358,Mental Health Counseling,Average Mental Health Counseling experience. Met basic expectations. Billing process was transparent.,positive,0.08333333333333333,3,2025-05-17
+FB_0359,Mental Health Counseling,The Mental Health Counseling was excellent. Staff was professional and caring.,positive,0.2727272727272727,4,2025-05-15
+FB_0360,Urgent Care,Perfect Urgent Care experience. Exceeded my expectations. Appointment scheduling was convenient.,positive,0.18181818181818182,4,2025-07-08
+FB_0361,Preventive Care,Standard Preventive Care quality. Neither particularly good nor bad.,positive,0.1111111111111111,4,2024-11-26
+FB_0362,Specialist Consultation,Awful Specialist Consultation. Worst experience I've ever had. Appointment scheduling was convenient.,negative,-0.08333333333333333,3,2024-12-25
+FB_0363,Mental Health Counseling,Exceptional Mental Health Counseling quality. Will definitely return. Location was easily accessible.,positive,0.25,4,2024-11-01
+FB_0364,Home Healthcare,Perfect Home Healthcare experience. Exceeded my expectations. Follow-up care was thorough.,positive,0.18181818181818182,5,2024-12-23
+FB_0365,Laboratory Testing,Frustrated with Laboratory Testing. Nothing went as expected. Billing process was transparent.,neutral,0,1,2024-12-16
+FB_0366,Surgical Procedures,The Surgical Procedures team was knowledgeable and helpful throughout.,positive,0.2222222222222222,4,2025-01-23
+FB_0367,Telemedicine Consultation,Frustrated with Telemedicine Consultation. Nothing went as expected.,negative,-0.125,1,2025-03-03
+FB_0368,Mental Health Counseling,Great experience with Mental Health Counseling. Everything went smoothly.,positive,0.1111111111111111,5,2025-03-12
+FB_0369,Emergency Care,Poor Emergency Care quality. Multiple issues during the visit. Billing process was transparent.,positive,0.07692307692307693,3,2024-11-12
+FB_0370,Specialist Consultation,Outstanding Specialist Consultation experience. Highly recommend to others. Location was easily accessible.,positive,0.25,4,2025-01-15
+FB_0371,Mental Health Counseling,Decent Mental Health Counseling. About what I expected.,neutral,0,3,2025-06-01
+FB_0372,Mental Health Counseling,Average Mental Health Counseling experience. Met basic expectations.,neutral,0,4,2025-05-16
+FB_0373,Urgent Care,Poor Urgent Care quality. Multiple issues during the visit.,neutral,0,1,2024-12-09
+FB_0374,Laboratory Testing,Frustrated with Laboratory Testing. Nothing went as expected.,negative,-0.125,3,2025-03-18
+FB_0375,Pharmacy Services,Perfect Pharmacy Services experience. Exceeded my expectations.,positive,0.14285714285714285,5,2025-04-07
+FB_0376,Mental Health Counseling,Amazing Mental Health Counseling. The staff was wonderful and caring. Appointment scheduling was convenient.,positive,0.2857142857142857,4,2025-09-09
+FB_0377,Pharmacy Services,Frustrated with Pharmacy Services. Nothing went as expected. Appointment scheduling was convenient.,neutral,0,2,2025-05-23
+FB_0378,Radiology Services,Poor Radiology Services quality. Multiple issues during the visit.,neutral,0,3,2024-10-02
+FB_0379,Laboratory Testing,Perfect Laboratory Testing experience. Exceeded my expectations.,positive,0.14285714285714285,5,2025-01-25
+FB_0380,Physical Therapy,Awful Physical Therapy. Worst experience I've ever had. Location was easily accessible.,negative,-0.08333333333333333,2,2025-06-15
+FB_0381,Preventive Care,The Preventive Care was adequate. Nothing exceptional but acceptable.,positive,0.1111111111111111,3,2024-10-10
+FB_0382,Telemedicine Consultation,Frustrated with Telemedicine Consultation. Nothing went as expected. Appointment scheduling was convenient.,neutral,0,1,2024-09-20
+FB_0383,Physical Therapy,Perfect Physical Therapy experience. Exceeded my expectations.,positive,0.14285714285714285,5,2024-10-15
+FB_0384,Surgical Procedures,Amazing Surgical Procedures. The staff was wonderful and caring. Location was easily accessible.,positive,0.3076923076923077,5,2024-12-17
+FB_0385,Pharmacy Services,Amazing Pharmacy Services. The staff was wonderful and caring.,positive,0.3333333333333333,4,2025-07-25
+FB_0386,Emergency Care,Poor Emergency Care quality. Multiple issues during the visit. Location was easily accessible.,positive,0.07692307692307693,2,2025-03-20
+FB_0387,Pharmacy Services,The Pharmacy Services was subpar. Staff seemed unprepared and rushed.,negative,-0.2,2,2025-01-25
+FB_0388,Specialist Consultation,The Specialist Consultation team was knowledgeable and helpful throughout. The facility was clean and well-organized.,positive,0.2,4,2025-08-01
+FB_0389,Radiology Services,Perfect Radiology Services experience. Exceeded my expectations. The facility was clean and well-organized.,positive,0.15384615384615385,4,2025-08-06
+FB_0390,Surgical Procedures,Decent Surgical Procedures. About what I expected.,neutral,0,3,2024-12-21
+FB_0391,Telemedicine Consultation,Perfect Telemedicine Consultation experience. Exceeded my expectations. The facility was clean and well-organized.,positive,0.15384615384615385,5,2024-12-13
+FB_0392,Specialist Consultation,Unsatisfactory Specialist Consultation experience. Would not recommend.,neutral,0,2,2025-09-09
+FB_0393,Mental Health Counseling,Frustrated with Mental Health Counseling. Nothing went as expected.,negative,-0.1111111111111111,2,2025-06-26
+FB_0394,Specialist Consultation,Amazing Specialist Consultation. The staff was wonderful and caring.,positive,0.3333333333333333,5,2025-03-05
+FB_0395,Urgent Care,Outstanding Urgent Care experience. Highly recommend to others.,positive,0.25,5,2025-08-21
+FB_0396,Emergency Care,Outstanding Emergency Care experience. Highly recommend to others.,positive,0.25,5,2025-04-03
+FB_0397,Telemedicine Consultation,Horrible Telemedicine Consultation. Complete waste of time and money.,negative,-0.1111111111111111,2,2024-12-08
+FB_0398,Radiology Services,Amazing Radiology Services. The staff was wonderful and caring. Location was easily accessible.,positive,0.3076923076923077,5,2025-05-14
+FB_0399,Urgent Care,Exceptional Urgent Care quality. Will definitely return. Appointment scheduling was convenient.,positive,0.2727272727272727,5,2025-04-08
+FB_0400,Laboratory Testing,The Laboratory Testing was excellent. Staff was professional and caring.,positive,0.3,5,2025-03-17
+FB_0401,Pharmacy Services,Outstanding Pharmacy Services experience. Highly recommend to others. Billing process was transparent.,positive,0.25,5,2025-07-27
+FB_0402,Telemedicine Consultation,Outstanding Telemedicine Consultation experience. Highly recommend to others.,positive,0.25,5,2025-03-04
+FB_0403,Telemedicine Consultation,Amazing Telemedicine Consultation. The staff was wonderful and caring.,positive,0.3333333333333333,4,2024-11-29
+FB_0404,Preventive Care,Amazing Preventive Care. The staff was wonderful and caring. Follow-up care was thorough.,positive,0.3076923076923077,5,2025-05-03
+FB_0405,Surgical Procedures,Very satisfied with Surgical Procedures. Quick and efficient service.,positive,0.2222222222222222,5,2025-04-17
+FB_0406,Surgical Procedures,Awful Surgical Procedures. Worst experience I've ever had. Appointment scheduling was convenient.,negative,-0.08333333333333333,3,2024-11-01
+FB_0407,Surgical Procedures,Poor Surgical Procedures quality. Multiple issues during the visit.,neutral,0,1,2025-04-15
+FB_0408,Telemedicine Consultation,Decent Telemedicine Consultation. About what I expected.,neutral,0,4,2025-04-02
+FB_0409,Surgical Procedures,Very satisfied with Surgical Procedures. Quick and efficient service.,positive,0.2222222222222222,4,2025-01-15
+FB_0410,Laboratory Testing,Amazing Laboratory Testing. The staff was wonderful and caring.,positive,0.3333333333333333,5,2024-09-27
+FB_0411,Home Healthcare,The Home Healthcare team was knowledgeable and helpful throughout.,positive,0.2222222222222222,5,2025-02-28
+FB_0412,Laboratory Testing,The Laboratory Testing team was knowledgeable and helpful throughout.,positive,0.2222222222222222,4,2024-10-03
+FB_0413,Preventive Care,Perfect Preventive Care experience. Exceeded my expectations.,positive,0.14285714285714285,4,2025-02-05
+FB_0414,Pharmacy Services,Average Pharmacy Services experience. Met basic expectations.,neutral,0,4,2024-10-08
+FB_0415,Surgical Procedures,Exceptional Surgical Procedures quality. Will definitely return. Appointment scheduling was convenient.,positive,0.2727272727272727,5,2025-03-08
+FB_0416,Emergency Care,Perfect Emergency Care experience. Exceeded my expectations.,positive,0.14285714285714285,5,2024-12-13
+FB_0417,Telemedicine Consultation,Awful Telemedicine Consultation. Worst experience I've ever had.,negative,-0.25,3,2024-11-17
+FB_0418,Home Healthcare,Average Home Healthcare experience. Met basic expectations.,neutral,0,4,2025-06-24
+FB_0419,Home Healthcare,Frustrated with Home Healthcare. Nothing went as expected.,negative,-0.125,2,2025-02-09
+FB_0420,Emergency Care,Exceptional Emergency Care quality. Will definitely return. Location was easily accessible.,positive,0.2727272727272727,4,2025-02-01
+FB_0421,Laboratory Testing,Very satisfied with Laboratory Testing. Quick and efficient service.,positive,0.2222222222222222,4,2025-01-13
+FB_0422,Emergency Care,Outstanding Emergency Care experience. Highly recommend to others. Appointment scheduling was convenient.,positive,0.25,5,2025-04-11
+FB_0423,Laboratory Testing,The Laboratory Testing team was knowledgeable and helpful throughout.,positive,0.2222222222222222,5,2025-01-17
+FB_0424,Emergency Care,Perfect Emergency Care experience. Exceeded my expectations.,positive,0.14285714285714285,5,2025-08-26
+FB_0425,Urgent Care,Great experience with Urgent Care. Everything went smoothly.,positive,0.125,4,2025-05-16
+FB_0426,Preventive Care,Very satisfied with Preventive Care. Quick and efficient service.,positive,0.2222222222222222,5,2025-01-24
+FB_0427,Mental Health Counseling,Unsatisfactory Mental Health Counseling experience. Would not recommend. Billing process was transparent.,positive,0.08333333333333333,2,2025-09-03
+FB_0428,Urgent Care,Poor Urgent Care quality. Multiple issues during the visit.,neutral,0,2,2025-03-02
+FB_0429,Telemedicine Consultation,Poor Telemedicine Consultation quality. Multiple issues during the visit. The facility was clean and well-organized.,positive,0.06666666666666667,3,2025-07-27
+FB_0430,Preventive Care,Great experience with Preventive Care. Everything went smoothly. The facility was clean and well-organized.,positive,0.14285714285714285,5,2024-10-09
+FB_0431,Surgical Procedures,Awful Surgical Procedures. Worst experience I've ever had.,negative,-0.25,3,2025-03-01
+FB_0432,Specialist Consultation,Great experience with Specialist Consultation. Everything went smoothly.,positive,0.125,4,2024-10-08
+FB_0433,Urgent Care,Average Urgent Care experience. Met basic expectations.,neutral,0,4,2025-07-19
+FB_0434,Mental Health Counseling,Very satisfied with Mental Health Counseling. Quick and efficient service.,positive,0.2,4,2024-12-30
+FB_0435,Radiology Services,Very satisfied with Radiology Services. Quick and efficient service.,positive,0.2222222222222222,5,2025-06-14
+FB_0436,Surgical Procedures,Unsatisfactory Surgical Procedures experience. Would not recommend.,neutral,0,2,2025-04-23
+FB_0437,Physical Therapy,Perfect Physical Therapy experience. Exceeded my expectations.,positive,0.14285714285714285,5,2025-09-13
+FB_0438,Surgical Procedures,Amazing Surgical Procedures. The staff was wonderful and caring.,positive,0.3333333333333333,5,2025-02-20
+FB_0439,Home Healthcare,Perfect Home Healthcare experience. Exceeded my expectations.,positive,0.14285714285714285,4,2024-12-02
+FB_0440,Telemedicine Consultation,Poor Telemedicine Consultation quality. Multiple issues during the visit. Follow-up care was thorough.,positive,0.07692307692307693,1,2024-12-16
+FB_0441,Pharmacy Services,Perfect Pharmacy Services experience. Exceeded my expectations.,positive,0.14285714285714285,5,2024-12-10
+FB_0442,Preventive Care,Outstanding Preventive Care experience. Highly recommend to others. Location was easily accessible.,positive,0.25,5,2024-12-14
+FB_0443,Telemedicine Consultation,Horrible Telemedicine Consultation. Complete waste of time and money.,negative,-0.1111111111111111,2,2025-07-27
+FB_0444,Urgent Care,Standard Urgent Care quality. Neither particularly good nor bad. The facility was clean and well-organized.,positive,0.13333333333333333,4,2025-05-06
+FB_0445,Laboratory Testing,Average Laboratory Testing experience. Met basic expectations.,neutral,0,3,2025-05-19
+FB_0446,Mental Health Counseling,Decent Mental Health Counseling. About what I expected.,neutral,0,4,2025-06-25
+FB_0447,Specialist Consultation,The Specialist Consultation team was knowledgeable and helpful throughout.,positive,0.2222222222222222,4,2024-11-30
+FB_0448,Laboratory Testing,Unsatisfactory Laboratory Testing experience. Would not recommend.,neutral,0,3,2025-04-21
+FB_0449,Pharmacy Services,The Pharmacy Services was subpar. Staff seemed unprepared and rushed. Billing process was transparent.,negative,-0.07142857142857142,1,2025-04-29
+FB_0450,Home Healthcare,Very satisfied with Home Healthcare. Quick and efficient service. Follow-up care was thorough.,positive,0.23076923076923078,4,2024-10-06
+FB_0451,Radiology Services,Exceptional Radiology Services quality. Will definitely return.,positive,0.2857142857142857,5,2025-01-29
+FB_0452,Emergency Care,The Emergency Care was subpar. Staff seemed unprepared and rushed.,negative,-0.2,3,2025-04-28
+FB_0453,Urgent Care,Decent Urgent Care. About what I expected.,neutral,0,4,2025-04-03
+FB_0454,Specialist Consultation,Outstanding Specialist Consultation experience. Highly recommend to others.,positive,0.25,5,2024-10-27
+FB_0455,Home Healthcare,The Home Healthcare was subpar. Staff seemed unprepared and rushed.,negative,-0.2,2,2025-05-29
+FB_0456,Radiology Services,Acceptable Radiology Services. Got the job done. Follow-up care was thorough.,positive,0.09090909090909091,4,2024-12-11
+FB_0457,Specialist Consultation,Perfect Specialist Consultation experience. Exceeded my expectations.,positive,0.14285714285714285,4,2025-08-25
+FB_0458,Emergency Care,Horrible Emergency Care. Complete waste of time and money. Appointment scheduling was convenient.,neutral,0,2,2025-01-27
+FB_0459,Telemedicine Consultation,The Telemedicine Consultation was reasonable. Nothing special. Appointment scheduling was convenient.,positive,0.09090909090909091,4,2025-06-28
+FB_0460,Pharmacy Services,Great experience with Pharmacy Services. Everything went smoothly. Follow-up care was thorough.,positive,0.16666666666666666,4,2025-08-22
+FB_0461,Radiology Services,Poor Radiology Services quality. Multiple issues during the visit.,neutral,0,1,2024-09-22
+FB_0462,Emergency Care,Perfect Emergency Care experience. Exceeded my expectations. Location was easily accessible.,positive,0.18181818181818182,4,2024-12-26
+FB_0463,Home Healthcare,The Home Healthcare was excellent. Staff was professional and caring.,positive,0.3,4,2025-02-13
+FB_0464,Urgent Care,Outstanding Urgent Care experience. Highly recommend to others. The facility was clean and well-organized.,positive,0.21428571428571427,4,2025-07-27
+FB_0465,Laboratory Testing,Exceptional Laboratory Testing quality. Will definitely return. Appointment scheduling was convenient.,positive,0.2727272727272727,4,2025-08-13
+FB_0466,Preventive Care,Unsatisfactory Preventive Care experience. Would not recommend.,neutral,0,3,2025-05-31
+FB_0467,Home Healthcare,Frustrated with Home Healthcare. Nothing went as expected.,negative,-0.125,2,2025-05-29
+FB_0468,Emergency Care,"The Emergency Care was okay. Some good aspects, some areas for improvement.",positive,0.08333333333333333,4,2025-03-22
+FB_0469,Radiology Services,Very satisfied with Radiology Services. Quick and efficient service. The facility was clean and well-organized.,positive,0.2,4,2024-12-08
+FB_0470,Specialist Consultation,Terrible Specialist Consultation experience. Very unprofessional staff.,negative,-0.2857142857142857,3,2025-09-04
+FB_0471,Home Healthcare,Standard Home Healthcare quality. Neither particularly good nor bad.,positive,0.1111111111111111,3,2025-03-01
+FB_0472,Pharmacy Services,Poor Pharmacy Services quality. Multiple issues during the visit.,neutral,0,1,2025-05-17
+FB_0473,Surgical Procedures,The Surgical Procedures was subpar. Staff seemed unprepared and rushed.,negative,-0.2,1,2025-03-17
+FB_0474,Laboratory Testing,Amazing Laboratory Testing. The staff was wonderful and caring.,positive,0.3333333333333333,4,2025-01-19
+FB_0475,Emergency Care,Outstanding Emergency Care experience. Highly recommend to others. Appointment scheduling was convenient.,positive,0.25,4,2025-08-18
+FB_0476,Radiology Services,Frustrated with Radiology Services. Nothing went as expected.,negative,-0.125,2,2025-08-06
+FB_0477,Home Healthcare,Unsatisfactory Home Healthcare experience. Would not recommend. Follow-up care was thorough.,positive,0.09090909090909091,1,2024-12-30
+FB_0478,Mental Health Counseling,"The Mental Health Counseling was okay. Some good aspects, some areas for improvement.",positive,0.07692307692307693,4,2024-11-21
+FB_0479,Home Healthcare,The Home Healthcare was subpar. Staff seemed unprepared and rushed.,negative,-0.2,2,2025-05-18
+FB_0480,Telemedicine Consultation,Amazing Telemedicine Consultation. The staff was wonderful and caring. Location was easily accessible.,positive,0.3076923076923077,4,2025-04-12
+FB_0481,Home Healthcare,Unsatisfactory Home Healthcare experience. Would not recommend. Appointment scheduling was convenient.,positive,0.09090909090909091,3,2025-09-12
+FB_0482,Physical Therapy,Great experience with Physical Therapy. Everything went smoothly.,positive,0.125,5,2025-06-24
+FB_0483,Laboratory Testing,Exceptional Laboratory Testing quality. Will definitely return.,positive,0.2857142857142857,4,2025-09-02
+FB_0484,Laboratory Testing,The Laboratory Testing was fine. Could be better but wasn't terrible.,negative,-0.09090909090909091,4,2024-09-18
+FB_0485,Specialist Consultation,Horrible Specialist Consultation. Complete waste of time and money.,negative,-0.1111111111111111,2,2025-08-20
+FB_0486,Surgical Procedures,"The Surgical Procedures was okay. Some good aspects, some areas for improvement.",positive,0.08333333333333333,4,2025-07-27
+FB_0487,Specialist Consultation,The Specialist Consultation was subpar. Staff seemed unprepared and rushed. Location was easily accessible.,negative,-0.07142857142857142,1,2025-08-26
+FB_0488,Telemedicine Consultation,Perfect Telemedicine Consultation experience. Exceeded my expectations.,positive,0.14285714285714285,4,2025-06-18
+FB_0489,Telemedicine Consultation,Frustrated with Telemedicine Consultation. Nothing went as expected. Appointment scheduling was convenient.,neutral,0,2,2025-04-07
+FB_0490,Pharmacy Services,Decent Pharmacy Services. About what I expected. The facility was clean and well-organized.,positive,0.07692307692307693,3,2025-05-26
+FB_0491,Preventive Care,The Preventive Care was reasonable. Nothing special. Billing process was transparent.,positive,0.09090909090909091,4,2025-04-11
+FB_0492,Laboratory Testing,Perfect Laboratory Testing experience. Exceeded my expectations. Appointment scheduling was convenient.,positive,0.18181818181818182,5,2024-12-03
+FB_0493,Pharmacy Services,Poor Pharmacy Services quality. Multiple issues during the visit.,neutral,0,3,2025-01-08
+FB_0494,Mental Health Counseling,Poor Mental Health Counseling quality. Multiple issues during the visit. Billing process was transparent.,positive,0.07142857142857142,1,2025-05-21
+FB_0495,Preventive Care,The Preventive Care was excellent. Staff was professional and caring.,positive,0.3,4,2024-10-16
+FB_0496,Radiology Services,The Radiology Services was fine. Could be better but wasn't terrible. Location was easily accessible.,neutral,0,3,2025-02-15
+FB_0497,Surgical Procedures,"The Surgical Procedures was okay. Some good aspects, some areas for improvement.",positive,0.08333333333333333,3,2025-08-26
+FB_0498,Mental Health Counseling,The Mental Health Counseling was reasonable. Nothing special.,neutral,0,4,2025-01-26
+FB_0499,Urgent Care,Outstanding Urgent Care experience. Highly recommend to others.,positive,0.25,5,2025-08-10
+FB_0500,Specialist Consultation,Frustrated with Specialist Consultation. Nothing went as expected.,negative,-0.125,1,2025-05-19

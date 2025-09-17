@@ -1,0 +1,24 @@
+# Streamlit Sentiment Analysis Dashboard Requirements
+# ================================================
+# Core dependencies for the interactive dashboard
+
+# Streamlit and web framework
+streamlit>=1.28.0
+
+# Data processing and analysis
+pandas>=1.3.0
+numpy>=1.21.0
+
+# Interactive visualizations
+plotly>=5.0.0
+plotly-express>=0.4.0
+
+# Additional utilities
+python-dateutil>=2.8.0
+pathlib2>=2.3.0
+seaborn>=0.11.0
+nltk>=3.6.0
+
+# Optional: Enhanced features
+streamlit-option-menu>=0.3.0
+streamlit-extras>=0.3.0
