@@ -29,7 +29,7 @@ def main():
     # Launch Streamlit
     try:
         subprocess.run([
-            sys.executable, "-m", "streamlit", "run", "streamlit_app.py",
+            sys.executable, "-m", "streamlit", "run", "streamlit_app_integrated.py",
             "--server.port", "8501",
             "--server.address", "localhost"
         ], check=True)

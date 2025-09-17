@@ -28,7 +28,7 @@ git push -u origin main
 Ensure your repository has this structure:
 ```
 sentiment-analysis-demo/
-├── streamlit_app.py              # Main Streamlit application
+├── streamlit_app_integrated.py   # Main Streamlit application
 ├── simplified_demo.py            # Simplified sentiment analyzer
 ├── hipaa_sentiment_analysis.py   # Full-featured analyzer
 ├── streamlit_requirements.txt    # Streamlit-specific requirements
@@ -49,7 +49,7 @@ Fill in the deployment form:
 
 - **Repository**: `YOUR_USERNAME/sentiment-analysis-demo`
 - **Branch**: `main` (or your default branch)
-- **Main file path**: `streamlit_app.py`
+- **Main file path**: `streamlit_app_integrated.py`
 - **App URL**: Choose a custom URL (e.g., `healthcare-sentiment-analysis`)
 
 ### 2.3 Advanced Settings

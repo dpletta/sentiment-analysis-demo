@@ -30,7 +30,7 @@ This repository contains a **complete proof of concept** for HIPAA-compliant sen
 
 ```
 sentiment-analysis-demo/
-├── streamlit_app.py              # 🎯 Interactive Streamlit Dashboard
+├── streamlit_app_integrated.py   # 🎯 Current Interactive Streamlit Dashboard
 ├── run_dashboard.py              # Quick launcher script
 ├── hipaa_sentiment_analysis.py   # Main analysis system
 ├── simplified_demo.py            # Simplified analyzer
@@ -75,7 +75,7 @@ The setup script will:
 source streamlit_env/bin/activate  # On Windows: streamlit_env\Scripts\activate
 
 # Start the dashboard
-streamlit run streamlit_app.py
+streamlit run streamlit_app_integrated.py
 ```
 
 ### 3. Open Your Browser
@@ -113,7 +113,7 @@ pip install -r streamlit_requirements.txt
 # Launch the dashboard
 python run_dashboard.py
 # OR
-streamlit run streamlit_app.py
+streamlit run streamlit_app_integrated.py
 ```
 
 **Option B: Command Line**

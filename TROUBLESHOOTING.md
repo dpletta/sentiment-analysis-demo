@@ -88,7 +88,7 @@ python -c "from simple_ai_chatbot import SimpleHealthcareChatbot; print('✅ Cha
 streamlit run streamlit_app.py
 
 # Or with specific port
-streamlit run streamlit_app.py --server.port 8501
+streamlit run streamlit_app_integrated.py --server.port 8501
 ```
 
 ## 🛠️ **Fallback Options**
@@ -106,7 +106,7 @@ For maximum HIPAA compliance:
 - No external connections
 
 ### Option 3: Manual Override
-Edit `streamlit_app.py` to force simplified mode:
+Edit `streamlit_app_integrated.py` to force simplified mode:
 ```python
 AI_CHATBOT_AVAILABLE = False  # Force simplified chatbot
 ```
@@ -132,7 +132,7 @@ AI_CHATBOT_AVAILABLE = False  # Force simplified chatbot
 
 ### For Local Server:
 1. Install dependencies on server
-2. Run with: `streamlit run streamlit_app.py --server.address 0.0.0.0`
+2. Run with: `streamlit run streamlit_app_integrated.py --server.address 0.0.0.0`
 3. Configure firewall for port access
 4. Set up reverse proxy if needed
 

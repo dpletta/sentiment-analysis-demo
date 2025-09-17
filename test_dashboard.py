@@ -76,15 +76,15 @@ def test_streamlit_app():
     
     try:
         # Check if the app file exists
-        app_file = Path("streamlit_app.py")
+        app_file = Path("streamlit_app_integrated.py")
         if not app_file.exists():
-            print("  ❌ streamlit_app.py not found")
+            print("  ❌ streamlit_app_integrated.py not found")
             return False
         
-        print("  ✅ streamlit_app.py found")
+        print("  ✅ streamlit_app_integrated.py found")
         
         # Try to import the main function
-        import streamlit_app
+        import streamlit_app_integrated
         print("  ✅ App module imported successfully")
         
         return True
@@ -154,7 +154,7 @@ def main():
         print("\n🎉 All tests passed! Your dashboard is ready to deploy.")
         print("\nNext steps:")
         print("1. Run: python run_dashboard.py")
-        print("2. Or: streamlit run streamlit_app.py")
+        print("2. Or: streamlit run streamlit_app_integrated.py")
         print("3. Deploy to Streamlit Cloud using streamlit_deployment_guide.md")
     else:
         print(f"\n⚠️  {total - passed} test(s) failed. Please fix issues before deploying.")

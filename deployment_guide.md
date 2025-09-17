@@ -36,7 +36,7 @@ streamlit run streamlit_app.py
 ### 2. Deploy to Streamlit Cloud
 - Go to [share.streamlit.io](https://share.streamlit.io)
 - Select repository: `sentiment-analysis-demo`
-- Main file: `streamlit_app.py` (now includes integrated features)
+- Main file: `streamlit_app_integrated.py` (includes integrated features)
 - Click Deploy
 
 ## 🎛️ Integrated Dashboard Features
@@ -85,7 +85,7 @@ python -c "from simplified_demo import SimplifiedSentimentAnalyzer; print('✅ A
 ## 📊 Requirements
 
 - `streamlit_requirements.txt`: All necessary packages
-- `streamlit_app.py`: Main integrated application
+- `streamlit_app_integrated.py`: Main integrated application
 - `simple_ai_chatbot.py`: AI assistant module
 - `simplified_demo.py`: Analysis engine
 

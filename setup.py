@@ -160,7 +160,7 @@ def print_completion_message(venv_name):
     
     print()
     print("2. Run the dashboard:")
-    print("   streamlit run streamlit_app.py")
+    print("   streamlit run streamlit_app_integrated.py")
     print()
     print("3. Open your browser to: http://localhost:8501")
     print()
