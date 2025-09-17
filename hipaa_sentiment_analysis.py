@@ -412,7 +412,9 @@ class HIPAACompliantSentimentAnalyzer:
         # 1. Overall Sentiment Distribution
         ax1 = plt.subplot(4, 3, 1)
         sentiment_counts = self.df['vader_sentiment'].value_counts()
-        colors = ['#2ecc71', '#e74c3c', '#f39c12']  # Green, Red, Orange
+        # Define consistent color mapping for sentiment categories
+        sentiment_colors = {'positive': '#2ecc71', 'negative': '#e74c3c', 'neutral': '#f39c12'}
+        colors = [sentiment_colors[sentiment] for sentiment in sentiment_counts.index]
         wedges, texts, autotexts = ax1.pie(sentiment_counts.values, 
                                           labels=sentiment_counts.index,
                                           autopct='%1.1f%%', 
@@ -424,7 +426,9 @@ class HIPAACompliantSentimentAnalyzer:
         ax2 = plt.subplot(4, 3, 2)
         service_sentiment = pd.crosstab(self.df['service_type'], self.df['vader_sentiment'])
         service_sentiment_pct = service_sentiment.div(service_sentiment.sum(axis=1), axis=0)
-        service_sentiment_pct.plot(kind='bar', stacked=True, ax=ax2, color=colors)
+        # Use consistent color mapping for stacked bar chart
+        bar_colors = [sentiment_colors[sentiment] for sentiment in service_sentiment_pct.columns]
+        service_sentiment_pct.plot(kind='bar', stacked=True, ax=ax2, color=bar_colors)
         ax2.set_title('Sentiment Distribution by Service Type', fontsize=14, fontweight='bold')
         ax2.set_xlabel('Service Type')
         ax2.set_ylabel('Proportion')
@@ -520,7 +524,9 @@ class HIPAACompliantSentimentAnalyzer:
         ax9 = plt.subplot(4, 3, 9)
         if hasattr(self, 'combination_analysis') and self.combination_analysis:
             combo_sentiment = self.combination_analysis['sentiment_distribution']
-            ax9.bar(combo_sentiment.index, combo_sentiment.values, color=['#2ecc71', '#e74c3c', '#f39c12'])
+            # Use consistent color mapping for combination chart
+            combo_colors = [sentiment_colors[sentiment] for sentiment in combo_sentiment.index]
+            ax9.bar(combo_sentiment.index, combo_sentiment.values, color=combo_colors)
             ax9.set_title('Sentiment in Service Combinations', fontsize=14, fontweight='bold')
             ax9.set_xlabel('Sentiment')
             ax9.set_ylabel('Count')
@@ -649,9 +655,12 @@ class HIPAACompliantSentimentAnalyzer:
         
         # 1. Sentiment Distribution Pie Chart
         sentiment_counts = self.df['vader_sentiment'].value_counts()
+        # Define consistent color mapping for sentiment categories
+        sentiment_colors = {'positive': '#2ecc71', 'negative': '#e74c3c', 'neutral': '#f39c12'}
         fig.add_trace(go.Pie(labels=sentiment_counts.index, 
                             values=sentiment_counts.values,
-                            name="Sentiment Distribution"), row=1, col=1)
+                            name="Sentiment Distribution",
+                            marker_colors=[sentiment_colors[sentiment] for sentiment in sentiment_counts.index]), row=1, col=1)
         
         # 2. Service Performance Bar Chart
         service_performance = self.df.groupby('service_type')['vader_compound'].mean().sort_values(ascending=False)
