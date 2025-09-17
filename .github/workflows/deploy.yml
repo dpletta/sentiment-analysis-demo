@@ -36,6 +36,7 @@ jobs:
     - name: Test imports
       run: |
         python -c "from streamlit_app import main; print('✅ Streamlit app imports successfully')"
+        python -c "from streamlit_app_integrated import main; print('✅ Integrated app imports successfully')"
         python -c "from simplified_demo import SimplifiedSentimentAnalyzer; print('✅ Sentiment analyzer works')"
         python -c "from simple_ai_chatbot import SimpleHealthcareChatbot; print('✅ Simplified chatbot works')"
         
