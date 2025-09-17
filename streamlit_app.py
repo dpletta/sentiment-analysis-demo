@@ -25,6 +25,7 @@ from pathlib import Path
 
 # Import our sentiment analysis modules
 from simplified_demo import SimplifiedSentimentAnalyzer
+from ai_chatbot import HealthcareSentimentChatbot, create_chat_interface, create_ai_insights_panel
 # from hipaa_sentiment_analysis import HIPAACompliantSentimentAnalyzer  # Optional: Full analysis
 
 # Page configuration
@@ -194,6 +195,20 @@ st.markdown("""
     }
 </style>
 """, unsafe_allow_html=True)
+
+def create_sentiment_legend():
+    """Create a clear legend explaining sentiment scores."""
+    st.markdown("""
+    <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 20px; border-radius: 10px; margin: 20px 0;">
+        <h3 style="color: white; margin: 0;">📊 Understanding Sentiment Scores</h3>
+        <div style="color: white; margin: 10px 0;">
+            <p style="margin: 5px 0;"><strong>🟢 Positive:</strong> Score > 0.05 (Happy, satisfied, pleased)</p>
+            <p style="margin: 5px 0;"><strong>🟡 Neutral:</strong> Score -0.05 to 0.05 (Neutral, mixed feelings)</p>
+            <p style="margin: 5px 0;"><strong>🔴 Negative:</strong> Score < -0.05 (Disappointed, frustrated, unhappy)</p>
+            <p style="margin: 10px 0 0 0;"><strong>Scale:</strong> -1.0 (Most Negative) ← → +1.0 (Most Positive)</p>
+        </div>
+    </div>
+    """, unsafe_allow_html=True)
 
 def create_magic_ui_header():
     """Create an animated header with Magic UI styling."""
@@ -452,6 +467,30 @@ def main():
     
     st.sidebar.markdown("---")
     
+    # HIPAA Compliance Settings
+    st.sidebar.markdown("### 🔒 HIPAA Compliance")
+    
+    enable_ai = st.sidebar.checkbox(
+        "Enable AI Assistant", 
+        value=True,
+        help="AI features use local processing only. Disable for maximum compliance."
+    )
+    
+    offline_mode = st.sidebar.checkbox(
+        "Offline Mode (Maximum HIPAA Compliance)", 
+        value=False,
+        help="Disables AI features entirely to prevent any external model downloads."
+    )
+    
+    if offline_mode:
+        st.sidebar.success("🔒 Maximum HIPAA compliance enabled - AI features disabled")
+    elif enable_ai:
+        st.sidebar.info("🤖 AI enabled - All inference happens locally")
+    else:
+        st.sidebar.warning("⚠️ AI features disabled")
+    
+    st.sidebar.markdown("---")
+    
     # Load data
     with st.spinner("🔄 Loading analysis data..."):
         analysis_data = load_sample_data()
@@ -500,16 +539,21 @@ def main():
         )
     
     # Main content tabs
-    tab1, tab2, tab3, tab4, tab5 = st.tabs([
+    tab1, tab2, tab3, tab4, tab5, tab6, tab7 = st.tabs([
         "📈 Overview", 
         "🏥 Service Analysis", 
         "🔗 Combinations", 
+        "👥 Demographics",
         "📊 Visualizations", 
+        "🤖 AI Assistant",
         "💡 Insights"
     ])
     
     with tab1:
         st.markdown("### Overall Sentiment Distribution")
+        
+        # Add sentiment legend
+        create_sentiment_legend()
         
         col1, col2 = st.columns([2, 1])
         
@@ -557,40 +601,111 @@ def main():
     with tab3:
         st.markdown("### Service Combination Analysis")
         
+        combinations = analyzer.analysis_results.get('combinations', [])
+        combination_patterns = analyzer.analysis_results.get('combination_patterns', {})
+        
         if combinations:
-            st.markdown(f"Found **{len(combinations)}** service combinations in the feedback data.")
+            st.success(f"Found {len(combinations)} service combinations in the feedback data")
             
-            # Combination sentiment distribution
-            combo_sentiment = Counter(combo['sentiment'] for combo in combinations)
-            
-            col1, col2 = st.columns(2)
+            # Combination overview metrics
+            col1, col2, col3, col4 = st.columns(4)
             
             with col1:
-                fig_combo = px.pie(
-                    values=list(combo_sentiment.values()),
-                    names=list(combo_sentiment.keys()),
-                    title="Combination Sentiment Distribution",
-                    color_discrete_map={
-                        'positive': '#4facfe',
-                        'negative': '#fa709a',
-                        'neutral': '#a8edea'
-                    }
+                st.metric(
+                    "Total Combinations",
+                    len(combinations),
+                    help="Number of feedback entries mentioning multiple services"
                 )
-                st.plotly_chart(fig_combo, use_container_width=True)
             
             with col2:
-                st.markdown("#### 🔗 Sample Combinations")
-                for i, combo in enumerate(combinations[:5]):
-                    st.markdown(f"""
-                    **{i+1}. {combo['primary_service']}**
-                    - Sentiment: {combo['sentiment']}
-                    - Score: {combo['sentiment_score']:.3f}
-                    - Services mentioned: {', '.join(combo['mentioned_services']) if combo['mentioned_services'] else 'None'}
-                    """)
+                avg_sentiment = combination_patterns.get('avg_sentiment_score', 0)
+                st.metric(
+                    "Avg Combination Sentiment",
+                    f"{avg_sentiment:.3f}",
+                    help="Average sentiment score for service combinations"
+                )
+            
+            with col3:
+                sentiment_dist = combination_patterns.get('sentiment_distribution', {})
+                positive_pct = (sentiment_dist.get('positive', 0) / len(combinations)) * 100
+                st.metric(
+                    "Positive Combinations",
+                    f"{positive_pct:.1f}%",
+                    help="Percentage of combinations with positive sentiment"
+                )
+            
+            with col4:
+                service_pairs = combination_patterns.get('service_pairs', {})
+                st.metric(
+                    "Unique Service Pairs",
+                    len(service_pairs),
+                    help="Number of unique service combinations found"
+                )
+            
+            # Top service pairs
+            st.markdown("#### 🔗 Most Common Service Combinations")
+            
+            if service_pairs:
+                # Sort by count and get top 10
+                sorted_pairs = sorted(service_pairs.items(), key=lambda x: x[1]['count'], reverse=True)[:10]
+                
+                pair_data = []
+                for (service1, service2), stats in sorted_pairs:
+                    pair_data.append({
+                        'Service Combination': f"{service1} + {service2}",
+                        'Frequency': stats['count'],
+                        'Avg Sentiment': f"{stats['avg_sentiment']:.3f}",
+                        'Avg Rating': f"{stats['avg_rating']:.1f}",
+                        'Sentiment Distribution': f"Pos: {stats['sentiment_distribution'].get('positive', 0)}, Neg: {stats['sentiment_distribution'].get('negative', 0)}, Neu: {stats['sentiment_distribution'].get('neutral', 0)}"
+                    })
+                
+                df_pairs = pd.DataFrame(pair_data)
+                st.dataframe(df_pairs, use_container_width=True)
+                
+                # Service pair visualization
+                if len(sorted_pairs) > 0:
+                    fig_pairs = px.bar(
+                        df_pairs,
+                        x='Service Combination',
+                        y='Frequency',
+                        title="Service Combination Frequency",
+                        color='Avg Sentiment',
+                        color_continuous_scale='RdYlGn',
+                        color_continuous_midpoint=0
+                    )
+                    fig_pairs.update_layout(
+                        xaxis_tickangle=-45,
+                        height=500,
+                        showlegend=False
+                    )
+                    st.plotly_chart(fig_pairs, use_container_width=True)
+            
+            # Detailed combination examples
+            st.markdown("#### 📝 Sample Service Combinations")
+            
+            # Show some examples
+            sample_combinations = combinations[:5]  # Show first 5
+            
+            for i, combo in enumerate(sample_combinations, 1):
+                with st.expander(f"Combination {i}: {combo['primary_service']} + {', '.join(combo['mentioned_services'])}"):
+                    col1, col2 = st.columns([3, 1])
+                    
+                    with col1:
+                        st.write(f"**Feedback:** {combo['feedback']}")
+                    
+                    with col2:
+                        sentiment_color = "🟢" if combo['sentiment'] == 'positive' else "🔴" if combo['sentiment'] == 'negative' else "🟡"
+                        st.write(f"**Sentiment:** {sentiment_color} {combo['sentiment'].title()}")
+                        st.write(f"**Score:** {combo['sentiment_score']:.3f}")
+                        st.write(f"**Rating:** {combo['rating']}/5")
+                        st.write(f"**Age Group:** {combo.get('age_group', 'Unknown')}")
+                        st.write(f"**Gender:** {combo.get('gender', 'Unknown')}")
+                        st.write(f"**Insurance:** {combo.get('insurance_type', 'Unknown')}")
+        
         else:
             st.info("No service combinations found in the current dataset.")
     
-    with tab4:
+    with tab5:
         st.markdown("### Advanced Visualizations")
         
         # Word frequency analysis
@@ -633,7 +748,195 @@ def main():
         
         st.plotly_chart(fig_corr, use_container_width=True)
     
-    with tab5:
+    with tab4:
+        st.markdown("### Demographic Sentiment Analysis")
+        
+        demographic_analysis = analyzer.analysis_results.get('demographic_analysis', {})
+        
+        if demographic_analysis:
+            st.success("Demographic sentiment clustering analysis completed")
+            
+            # Age group analysis
+            st.markdown("#### 👥 Sentiment by Age Group")
+            
+            age_data = demographic_analysis.get('age_groups', {})
+            if age_data:
+                age_df = pd.DataFrame([
+                    {
+                        'Age Group': age,
+                        'Total Feedback': stats['total'],
+                        'Positive %': stats['positive_pct'],
+                        'Negative %': stats['negative_pct'],
+                        'Neutral %': stats['neutral_pct'],
+                        'Avg Sentiment Score': stats['avg_score'],
+                        'Avg Rating': stats['avg_rating']
+                    }
+                    for age, stats in age_data.items()
+                ])
+                
+                col1, col2 = st.columns(2)
+                
+                with col1:
+                    st.dataframe(age_df, use_container_width=True)
+                
+                with col2:
+                    fig_age_sentiment = px.bar(
+                        age_df,
+                        x='Age Group',
+                        y=['Positive %', 'Negative %', 'Neutral %'],
+                        title="Sentiment Distribution by Age Group",
+                        color_discrete_map={
+                            'Positive %': '#2E8B57',
+                            'Negative %': '#DC143C',
+                            'Neutral %': '#FFD700'
+                        }
+                    )
+                    st.plotly_chart(fig_age_sentiment, use_container_width=True)
+            
+            # Gender analysis
+            st.markdown("#### ⚥ Sentiment by Gender")
+            
+            gender_data = demographic_analysis.get('genders', {})
+            if gender_data:
+                gender_df = pd.DataFrame([
+                    {
+                        'Gender': gender,
+                        'Total Feedback': stats['total'],
+                        'Positive %': stats['positive_pct'],
+                        'Negative %': stats['negative_pct'],
+                        'Neutral %': stats['neutral_pct'],
+                        'Avg Sentiment Score': stats['avg_score'],
+                        'Avg Rating': stats['avg_rating']
+                    }
+                    for gender, stats in gender_data.items()
+                ])
+                
+                col1, col2 = st.columns(2)
+                
+                with col1:
+                    st.dataframe(gender_df, use_container_width=True)
+                
+                with col2:
+                    fig_gender_sentiment = px.bar(
+                        gender_df,
+                        x='Gender',
+                        y=['Positive %', 'Negative %', 'Neutral %'],
+                        title="Sentiment Distribution by Gender",
+                        color_discrete_map={
+                            'Positive %': '#2E8B57',
+                            'Negative %': '#DC143C',
+                            'Neutral %': '#FFD700'
+                        }
+                    )
+                    st.plotly_chart(fig_gender_sentiment, use_container_width=True)
+            
+            # Insurance type analysis
+            st.markdown("#### 🏥 Sentiment by Insurance Type")
+            
+            insurance_data = demographic_analysis.get('insurance_types', {})
+            if insurance_data:
+                insurance_df = pd.DataFrame([
+                    {
+                        'Insurance Type': insurance,
+                        'Total Feedback': stats['total'],
+                        'Positive %': stats['positive_pct'],
+                        'Negative %': stats['negative_pct'],
+                        'Neutral %': stats['neutral_pct'],
+                        'Avg Sentiment Score': stats['avg_score'],
+                        'Avg Rating': stats['avg_rating']
+                    }
+                    for insurance, stats in insurance_data.items()
+                ])
+                
+                col1, col2 = st.columns(2)
+                
+                with col1:
+                    st.dataframe(insurance_df, use_container_width=True)
+                
+                with col2:
+                    fig_insurance_sentiment = px.bar(
+                        insurance_df,
+                        x='Insurance Type',
+                        y=['Positive %', 'Negative %', 'Neutral %'],
+                        title="Sentiment Distribution by Insurance Type",
+                        color_discrete_map={
+                            'Positive %': '#2E8B57',
+                            'Negative %': '#DC143C',
+                            'Neutral %': '#FFD700'
+                        }
+                    )
+                    st.plotly_chart(fig_insurance_sentiment, use_container_width=True)
+            
+            # Cross-demographic analysis
+            st.markdown("#### 🔍 Cross-Demographic Insights")
+            
+            # Find highest and lowest sentiment groups
+            all_groups = []
+            
+            for category, data in demographic_analysis.items():
+                for group, stats in data.items():
+                    all_groups.append({
+                        'Category': category.replace('_', ' ').title(),
+                        'Group': group,
+                        'Avg Sentiment': stats['avg_score'],
+                        'Positive %': stats['positive_pct'],
+                        'Total': stats['total']
+                    })
+            
+            if all_groups:
+                groups_df = pd.DataFrame(all_groups)
+                
+                # Top performing groups
+                st.markdown("**🏆 Highest Sentiment Groups**")
+                top_groups = groups_df.nlargest(5, 'Avg Sentiment')
+                st.dataframe(top_groups, use_container_width=True)
+                
+                # Lowest performing groups
+                st.markdown("**⚠️ Lowest Sentiment Groups**")
+                bottom_groups = groups_df.nsmallest(5, 'Avg Sentiment')
+                st.dataframe(bottom_groups, use_container_width=True)
+                
+                # Overall demographic heatmap
+                st.markdown("**📊 Demographic Sentiment Heatmap**")
+                
+                # Create pivot table for heatmap
+                pivot_data = groups_df.pivot(index='Group', columns='Category', values='Avg Sentiment')
+                
+                fig_heatmap = px.imshow(
+                    pivot_data,
+                    title="Average Sentiment Score by Demographic Group",
+                    color_continuous_scale='RdYlGn',
+                    color_continuous_midpoint=0,
+                    aspect='auto'
+                )
+                st.plotly_chart(fig_heatmap, use_container_width=True)
+        
+        else:
+            st.info("No demographic analysis data available. Please run the analysis first.")
+    
+    with tab6:
+        st.markdown("### 🤖 AI-Powered Data Assistant")
+        st.markdown("Ask questions about your sentiment analysis data and get intelligent insights!")
+        
+        # Prepare data context for AI
+        if 'chatbot' not in st.session_state:
+            st.session_state.chatbot = HealthcareSentimentChatbot(enable_ai=enable_ai, offline_mode=offline_mode)
+        
+        chatbot = st.session_state.chatbot
+        
+        # Prepare comprehensive data context
+        data_context = chatbot.prepare_data_context(analyzer.analysis_results, data)
+        st.session_state.data_context = data_context
+        
+        # AI Insights Panel
+        create_ai_insights_panel(analyzer.analysis_results, data)
+        
+        st.markdown("---")
+        
+        # Chat Interface
+        create_chat_interface()
+    
+    with tab7:
         st.markdown("### Key Insights & Recommendations")
         
         # Generate insights

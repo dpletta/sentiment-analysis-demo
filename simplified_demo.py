@@ -67,8 +67,8 @@ class SimplifiedSentimentAnalyzer:
             f.write(log_entry + "\n")
     
     def load_sample_data(self):
-        """Generate realistic healthcare service feedback data."""
-        self._log("Generating sample healthcare service feedback data")
+        """Generate realistic healthcare service feedback data with demographics."""
+        self._log("Generating sample healthcare service feedback data with demographics")
         
         services = [
             'Telemedicine Consultation', 'Emergency Care', 'Physical Therapy',
@@ -76,6 +76,11 @@ class SimplifiedSentimentAnalyzer:
             'Radiology Services', 'Surgical Procedures', 'Preventive Care',
             'Specialist Consultation', 'Home Healthcare', 'Urgent Care'
         ]
+        
+        # Add demographic categories
+        age_groups = ['18-25', '26-35', '36-45', '46-55', '56-65', '65+']
+        genders = ['Male', 'Female', 'Other', 'Prefer not to say']
+        insurance_types = ['Private', 'Medicare', 'Medicaid', 'Uninsured']
         
         # Realistic feedback templates
         feedback_templates = {
@@ -143,16 +148,38 @@ class SimplifiedSentimentAnalyzer:
             else:
                 rating = random.randint(3, 4)
             
+            # Add demographic information
+            age_group = random.choice(age_groups)
+            gender = random.choice(genders)
+            insurance = random.choice(insurance_types)
+            
+            # Add service combinations (30% chance)
+            combination_text = ""
+            if random.random() < 0.3:
+                second_service = random.choice([s for s in services if s != service])
+                combination_phrases = [
+                    f" Also used {second_service} - similar experience.",
+                    f" Combined with {second_service} - both were good.",
+                    f" Along with {second_service} - comprehensive care.",
+                    f" Additionally had {second_service} - seamless integration."
+                ]
+                combination_text = random.choice(combination_phrases)
+                feedback += combination_text
+            
             self.data.append({
                 'id': f"FB_{i+1:04d}",
                 'service_type': service,
                 'feedback_text': feedback,
                 'date': datetime.date.today() - datetime.timedelta(days=random.randint(0, 365)),
                 'rating': rating,
-                'true_sentiment': sentiment_type  # For validation
+                'true_sentiment': sentiment_type,  # For validation
+                'age_group': age_group,
+                'gender': gender,
+                'insurance_type': insurance,
+                'has_combination': bool(combination_text)
             })
         
-        self._log(f"Generated {len(self.data)} sample feedback entries")
+        self._log(f"Generated {len(self.data)} sample feedback entries with demographics")
         return self.data
     
     def preprocess_text(self, text):
@@ -258,19 +285,140 @@ class SimplifiedSentimentAnalyzer:
             combo_phrases = ['also used', 'additionally', 'combined with', 'along with']
             has_combo_language = any(phrase in text for phrase in combo_phrases)
             
-            if len(mentioned_services) > 1 or has_combo_language:
+            if len(mentioned_services) > 1 or has_combo_language or entry.get('has_combination', False):
                 combinations.append({
                     'id': entry['id'],
                     'primary_service': entry['service_type'],
                     'mentioned_services': mentioned_services,
                     'sentiment': entry['predicted_sentiment'],
                     'sentiment_score': entry['sentiment_score'],
-                    'feedback': entry['feedback_text']
+                    'feedback': entry['feedback_text'],
+                    'age_group': entry.get('age_group', 'Unknown'),
+                    'gender': entry.get('gender', 'Unknown'),
+                    'insurance_type': entry.get('insurance_type', 'Unknown'),
+                    'rating': entry.get('rating', 0)
                 })
         
         self.analysis_results['combinations'] = combinations
         self._log(f"Found {len(combinations)} service combinations")
         return combinations
+    
+    def analyze_demographic_sentiment_clusters(self):
+        """
+        Analyze sentiment patterns by demographic characteristics.
+        """
+        self._log("Analyzing demographic sentiment clusters")
+        
+        demographic_analysis = {
+            'age_groups': defaultdict(lambda: {'total': 0, 'positive': 0, 'negative': 0, 'neutral': 0, 'avg_score': 0, 'avg_rating': 0}),
+            'genders': defaultdict(lambda: {'total': 0, 'positive': 0, 'negative': 0, 'neutral': 0, 'avg_score': 0, 'avg_rating': 0}),
+            'insurance_types': defaultdict(lambda: {'total': 0, 'positive': 0, 'negative': 0, 'neutral': 0, 'avg_score': 0, 'avg_rating': 0})
+        }
+        
+        for entry in self.data:
+            sentiment = entry['predicted_sentiment']
+            score = entry['sentiment_score']
+            rating = entry['rating']
+            
+            # Age group analysis
+            age_group = entry.get('age_group', 'Unknown')
+            demographic_analysis['age_groups'][age_group]['total'] += 1
+            demographic_analysis['age_groups'][age_group][sentiment] += 1
+            demographic_analysis['age_groups'][age_group]['avg_score'] += score
+            demographic_analysis['age_groups'][age_group]['avg_rating'] += rating
+            
+            # Gender analysis
+            gender = entry.get('gender', 'Unknown')
+            demographic_analysis['genders'][gender]['total'] += 1
+            demographic_analysis['genders'][gender][sentiment] += 1
+            demographic_analysis['genders'][gender]['avg_score'] += score
+            demographic_analysis['genders'][gender]['avg_rating'] += rating
+            
+            # Insurance type analysis
+            insurance = entry.get('insurance_type', 'Unknown')
+            demographic_analysis['insurance_types'][insurance]['total'] += 1
+            demographic_analysis['insurance_types'][insurance][sentiment] += 1
+            demographic_analysis['insurance_types'][insurance]['avg_score'] += score
+            demographic_analysis['insurance_types'][insurance]['avg_rating'] += rating
+        
+        # Calculate averages
+        for category in demographic_analysis:
+            for group, stats in demographic_analysis[category].items():
+                if stats['total'] > 0:
+                    stats['avg_score'] /= stats['total']
+                    stats['avg_rating'] /= stats['total']
+                    stats['positive_pct'] = (stats['positive'] / stats['total']) * 100
+                    stats['negative_pct'] = (stats['negative'] / stats['total']) * 100
+                    stats['neutral_pct'] = (stats['neutral'] / stats['total']) * 100
+        
+        self.analysis_results['demographic_analysis'] = demographic_analysis
+        return demographic_analysis
+    
+    def analyze_combination_patterns(self):
+        """
+        Analyze patterns in service combinations.
+        """
+        self._log("Analyzing service combination patterns")
+        
+        combinations = self.analysis_results.get('combinations', [])
+        if not combinations:
+            return None
+        
+        combination_analysis = {
+            'total_combinations': len(combinations),
+            'avg_sentiment_score': sum(c['sentiment_score'] for c in combinations) / len(combinations),
+            'sentiment_distribution': Counter(c['sentiment'] for c in combinations),
+            'service_pairs': defaultdict(lambda: {'count': 0, 'avg_sentiment': 0, 'avg_rating': 0, 'sentiments': []}),
+            'demographic_patterns': {
+                'age_groups': defaultdict(lambda: {'count': 0, 'avg_sentiment': 0}),
+                'genders': defaultdict(lambda: {'count': 0, 'avg_sentiment': 0}),
+                'insurance_types': defaultdict(lambda: {'count': 0, 'avg_sentiment': 0})
+            }
+        }
+        
+        # Analyze service pairs
+        for combo in combinations:
+            primary = combo['primary_service']
+            mentioned = combo['mentioned_services']
+            
+            # Create pairs
+            for service in mentioned:
+                if service != primary:
+                    pair_key = tuple(sorted([primary, service]))
+                    combination_analysis['service_pairs'][pair_key]['count'] += 1
+                    combination_analysis['service_pairs'][pair_key]['avg_sentiment'] += combo['sentiment_score']
+                    combination_analysis['service_pairs'][pair_key]['avg_rating'] += combo['rating']
+                    combination_analysis['service_pairs'][pair_key]['sentiments'].append(combo['sentiment'])
+            
+            # Analyze demographic patterns
+            age_group = combo.get('age_group', 'Unknown')
+            gender = combo.get('gender', 'Unknown')
+            insurance = combo.get('insurance_type', 'Unknown')
+            
+            combination_analysis['demographic_patterns']['age_groups'][age_group]['count'] += 1
+            combination_analysis['demographic_patterns']['age_groups'][age_group]['avg_sentiment'] += combo['sentiment_score']
+            
+            combination_analysis['demographic_patterns']['genders'][gender]['count'] += 1
+            combination_analysis['demographic_patterns']['genders'][gender]['avg_sentiment'] += combo['sentiment_score']
+            
+            combination_analysis['demographic_patterns']['insurance_types'][insurance]['count'] += 1
+            combination_analysis['demographic_patterns']['insurance_types'][insurance]['avg_sentiment'] += combo['sentiment_score']
+        
+        # Calculate averages for service pairs
+        for pair, stats in combination_analysis['service_pairs'].items():
+            if stats['count'] > 0:
+                stats['avg_sentiment'] /= stats['count']
+                stats['avg_rating'] /= stats['count']
+                stats['sentiment_distribution'] = Counter(stats['sentiments'])
+        
+        # Calculate averages for demographic patterns
+        for category in combination_analysis['demographic_patterns']:
+            for group, stats in combination_analysis['demographic_patterns'][category].items():
+                if stats['count'] > 0:
+                    stats['avg_sentiment'] /= stats['count']
+        
+        self.analysis_results['combination_patterns'] = combination_analysis
+        return combination_analysis
     
     def calculate_accuracy(self):
         """
@@ -514,6 +662,16 @@ def main():
         print("🔗 Analyzing service combinations...")
         combinations = analyzer.find_service_combinations()
         print(f"✅ Found {len(combinations)} service combinations\n")
+        
+        # Analyze demographic sentiment clusters
+        print("👥 Analyzing demographic sentiment clusters...")
+        demographic_analysis = analyzer.analyze_demographic_sentiment_clusters()
+        print("✅ Demographic analysis completed\n")
+        
+        # Analyze combination patterns
+        print("🔍 Analyzing combination patterns...")
+        combination_patterns = analyzer.analyze_combination_patterns()
+        print("✅ Combination pattern analysis completed\n")
         
         # Generate insights
         print("💡 Generating insights and recommendations...")

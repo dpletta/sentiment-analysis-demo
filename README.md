@@ -15,8 +15,10 @@ This repository contains a **complete proof of concept** for HIPAA-compliant sen
 
 - **🔒 HIPAA Compliant**: Complete local processing with no external data transmission
 - **🎯 Interactive Dashboard**: Beautiful Streamlit interface with Magic UI components
+- **🤖 AI-Powered Assistant**: Hugging Face chatbot that answers questions about your data
 - **🤖 Multi-Method Analysis**: VADER, TF-IDF clustering, LDA topic modeling
 - **🔗 Combination Analysis**: Examine sentiment across service/product combinations  
+- **👥 Demographic Clustering**: Sentiment patterns by age, gender, and insurance type
 - **📊 Rich Visualizations**: Publication-ready charts and interactive dashboards
 - **📋 Comprehensive Reporting**: Detailed insights and recommendations
 - **🔍 Audit Trail**: Complete logging for compliance requirements
@@ -144,7 +146,9 @@ The **Streamlit Dashboard** provides a beautiful, interactive interface that mak
 - **📈 Interactive Charts**: Plotly-powered visualizations with hover details
 - **🏥 Service Analysis**: Detailed breakdown by healthcare service type
 - **🔗 Combination Insights**: Cross-service sentiment patterns
+- **👥 Demographic Analysis**: Sentiment clustering by patient characteristics
 - **📊 Advanced Visualizations**: Word clouds, correlations, and trends
+- **🤖 AI Assistant**: Ask questions about your data and get intelligent answers
 - **💡 Smart Recommendations**: AI-generated insights and suggestions
 - **🎛️ Easy Controls**: Simple sidebar controls for data exploration
 
